@@ -4,7 +4,18 @@ import { useState } from "react";
 import { VscEye } from "react-icons/vsc";
 import { VscEyeClosed } from "react-icons/vsc";
 const Register = () => {
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
+
+
+    const handleSignUp = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photo = form.photo.value;
+        const password = form.password.value;
+        console.log(name, email, photo, password);
+    }
     return (
         <div>
             <section className="font-lato ">
@@ -13,7 +24,9 @@ const Register = () => {
                         <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" />
                         <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl font-lato">sign Up</h1>
 
-                        <form className=''>
+                        <form
+                            onSubmit={handleSignUp}
+                            className=''>
                             <div className="relative flex items-center mt-6 md:mt-8">
                                 <span className="absolute">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
@@ -66,7 +79,7 @@ const Register = () => {
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                                 <span
-                                className="absolute right-5 text-lg md:text-xl "
+                                    className="absolute right-5 text-lg md:text-xl "
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
                                     {showPassword ? <VscEyeClosed></VscEyeClosed> : <VscEye></VscEye>}
@@ -74,9 +87,13 @@ const Register = () => {
 
                             </div>
                             <div className='mt-5 md:mt-6'>
-                                <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                                    Sign up
-                                </button>
+                                <input
+                                    className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                                    type="submit" value="Sign up" />
+                                {/* <input className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50" type="button" value="Sign up" /> */}
+                                {/* <button >
+                                   
+                                </button> */}
                             </div>
                         </form>
 
