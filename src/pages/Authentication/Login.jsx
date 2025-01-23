@@ -20,12 +20,22 @@ const Login = () => {
         }
     }
 
-    const handleSignIn =  e => {
+    const handleSignIn = async e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log('email,password', email, password);
+
+        try{
+            const result = await signIn(email, password);
+            console.log(result.user);
+            toast.success('SignIn Successfully')
+        }
+        catch(err) {
+            console.log(err);
+            toast.error(err.message)
+        }
     }
     return (
         <div>
