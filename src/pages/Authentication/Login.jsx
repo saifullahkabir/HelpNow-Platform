@@ -28,6 +28,8 @@ const Login = () => {
         const password = form.password.value;
         console.log('email,password', email, password);
 
+        setLoginError('');
+
         try {
             const result = await signIn(email, password);
             console.log(result.user);

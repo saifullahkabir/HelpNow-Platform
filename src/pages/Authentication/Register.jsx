@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, signInWithGoogle, updateUserProfile, setUser } = useAuth();
+    const [registerError, setRegisterError] = useState('');
 
     const handleGoogleSignUp = async () => {
         try {
@@ -28,7 +29,19 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
-        console.log(name, email, photo, password);
+
+        // Password Authentication
+        if (password.length < 6) {
+            return setRegisterError('password should be at least 6 characters or longer')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            return setRegisterError('password should have at least one upper case character')
+        }
+        else if (!/[a-z]/.test(password)) {
+            return setRegisterError('password should have at least one lower case character')
+        }
+
+        setRegisterError('');
 
         try {
             const result = await createUser(email, password);
@@ -40,7 +53,7 @@ const Register = () => {
         }
         catch (err) {
             console.log(err);
-            toast.success(err?.message)
+            setRegisterError(err.code);
         }
 
     }
@@ -114,14 +127,16 @@ const Register = () => {
                                 </span>
 
                             </div>
+                            <div className='mt-2 ml-2'>
+                                {
+                                    registerError && <p className="text-[12px] md:text-[15px] text-red-500">{registerError}</p>
+                                }
+                            </div>
                             <div className='mt-5 md:mt-6'>
                                 <input
                                     className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                                     type="submit" value="Sign up" />
-                                {/* <input className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50" type="button" value="Sign up" /> */}
-                                {/* <button >
-                                   
-                                </button> */}
+
                             </div>
                         </form>
 
