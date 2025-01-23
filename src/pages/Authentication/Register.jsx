@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/volunteer.png'
+import { useState } from "react";
+import { VscEye } from "react-icons/vsc";
+import { VscEyeClosed } from "react-icons/vsc";
 const Register = () => {
+    const [showPassword, setShowPassword] = useState(false)
     return (
         <div>
-             <section className="font-lato ">
+            <section className="font-lato ">
                 <div className="container flex items-center justify-center mt-10 md:mt-16 lg:mt-20 xl:mt-28 px-6 mx-auto">
                     <div className="w-full max-w-md">
                         <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" />
@@ -49,18 +53,25 @@ const Register = () => {
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
-                            <div className="relative flex items-center mt-3 md:mt-4">
+                            <div className=" relative flex items-center mt-3 md:mt-4">
                                 <span className="absolute">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                         <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg>
                                 </span>
                                 <input
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     placeholder='Password'
                                     name='password'
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
+                                <span
+                                className="absolute right-5 text-lg md:text-xl "
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <VscEyeClosed></VscEyeClosed> : <VscEye></VscEye>}
+                                </span>
+
                             </div>
                             <div className='mt-5 md:mt-6'>
                                 <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
