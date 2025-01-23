@@ -1,5 +1,5 @@
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/volunteer.png'
 
 const Navbar = () => {
@@ -41,14 +41,16 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul 
-                    id='nav'
-                    className="menu menu-horizontal px-2 gap-3 text-base ">
+                    <ul
+                        id='nav'
+                        className="menu menu-horizontal px-2 gap-3 text-base ">
                         {navLinks}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-sm md:btn-md text-xs md:text-base  bg-[#797DFC] text-white font-bold font-inter  md:px-6 rounded-3xl ">Login</a>
+                    <Link to='/login'>
+                        <a className="btn btn-sm md:btn-md text-xs md:text-base  bg-[#797DFC] hover:bg-[#888cfcc0] text-white font-bold font-inter  md:px-6 rounded-3xl ">Login</a>
+                    </Link>
                 </div>
             </div>
         </div>
