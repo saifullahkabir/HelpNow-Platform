@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signIn, signInWithGoogle } = useAuth();
+    const [loginError, setLoginError] = useState(true);
 
     const handleGoogleSignIn = async () => {
         try {
@@ -27,14 +28,14 @@ const Login = () => {
         const password = form.password.value;
         console.log('email,password', email, password);
 
-        try{
+        try {
             const result = await signIn(email, password);
             console.log(result.user);
             toast.success('SignIn Successfully')
         }
-        catch(err) {
+        catch (err) {
             console.log(err);
-            toast.error(err.message)
+            setLoginError(err.code)
         }
     }
     return (
@@ -47,9 +48,9 @@ const Login = () => {
 
                         <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl font-lato">sign In</h1>
 
-                        <form 
-                        onSubmit={handleSignIn} 
-                        className=''>
+                        <form
+                            onSubmit={handleSignIn}
+                            className=''>
                             <div className="relative flex items-center mt-6 md:mt-8">
                                 <span className="absolute">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
@@ -81,6 +82,11 @@ const Login = () => {
                                 >
                                     {showPassword ? <VscEyeClosed></VscEyeClosed> : <VscEye></VscEye>}
                                 </span>
+                            </div>
+                            <div className='mt-2 ml-2'>
+                                {
+                                    loginError && <p className="text-[12px] md:text-[15px] text-red-500">{loginError}</p>
+                                }
                             </div>
                             <div className='mt-5 md:mt-6'>
                                 <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
