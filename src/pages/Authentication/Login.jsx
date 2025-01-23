@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/volunteer.png'
+import { useState } from 'react';
+import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false)
     return (
         <div>
             <section className="font-lato ">
@@ -32,11 +35,17 @@ const Login = () => {
                                     </svg>
                                 </span>
                                 <input
-                                    type="password"
+                                    type={showPassword? "text" : "password"}
                                     placeholder='Password'
                                     name='password'
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
+                                <span
+                                    className="absolute right-5 text-lg md:text-xl "
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? <VscEyeClosed></VscEyeClosed> : <VscEye></VscEye>}
+                                </span>
                             </div>
                             <div className='mt-5 md:mt-6'>
                                 <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#797DFC] rounded-lg hover:bg-[#888cfcc0] focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
