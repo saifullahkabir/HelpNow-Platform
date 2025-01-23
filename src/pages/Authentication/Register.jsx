@@ -3,11 +3,13 @@ import logo from '../../assets/volunteer.png'
 import { useState } from "react";
 import { VscEye } from "react-icons/vsc";
 import { VscEyeClosed } from "react-icons/vsc";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const {createUser, signInWithGoogle, updateUserProfile, setUser} = useAuth();
 
-
-    const handleSignUp = e => {
+    const handleSignUp = async e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -15,6 +17,20 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
         console.log(name, email, photo, password);
+
+        try{
+            const result = await createUser(email, password);
+            await updateUserProfile(name, photo);
+            // Optimistic UI update
+            setUser({...result?.user, photoURL: photo, displayName: name} );
+            toast.success('SignUp Successfully')
+
+        }
+        catch(err) {
+            console.log(err);
+            toast.success(err?.message)
+        }
+
     }
     return (
         <div>
