@@ -58,7 +58,7 @@ const Register = () => {
 
     }
     return (
-        <div>
+        <div className="pb-14 md:pb-20 xl:pb-24">
             <section className="font-lato ">
                 <div className="container flex items-center justify-center mt-10 md:mt-16 lg:mt-20 xl:mt-28 px-6 mx-auto">
                     <div className="w-full max-w-md">
