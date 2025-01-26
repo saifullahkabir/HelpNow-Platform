@@ -58,17 +58,17 @@ const Register = () => {
 
     }
     return (
-        <div className="pb-14 md:pb-20 xl:pb-24">
+        <div className="pb-14 md:pb-20 xl:pb-24  ">
             <section className="font-lato ">
-                <div className="container flex items-center justify-center mt-10 md:mt-16 lg:mt-20 xl:mt-28 px-6 mx-auto">
+                <div className="container flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40 px-6 mx-auto">
                     <div className="w-full max-w-md">
                         <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" />
                         <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl font-lato">sign Up</h1>
 
                         <form
                             onSubmit={handleSignUp}
-                            className=''>
-                            <div className="relative flex items-center mt-6 md:mt-8">
+                            className='relative'>
+                            <div className=" flex items-center mt-6 md:mt-8 ">
                                 <span className="absolute">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                         <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -78,6 +78,7 @@ const Register = () => {
                                     type="text"
                                     name='name'
                                     placeholder='Name'
+                                    required
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
@@ -91,6 +92,7 @@ const Register = () => {
                                     type="email"
                                     name='email'
                                     placeholder='Email address'
+                                    required
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
@@ -104,6 +106,7 @@ const Register = () => {
                                     type="url"
                                     name='photo'
                                     placeholder='Photo URL'
+                                    required
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
@@ -117,6 +120,7 @@ const Register = () => {
                                     type={showPassword ? 'text' : 'password'}
                                     placeholder='Password'
                                     name='password'
+                                    required
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                                 <span

@@ -1,0 +1,28 @@
+.swiper-button-prev,
+.swiper-button-next {
+    color: #fff;
+
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #fff;
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+}
+
+:root {
+    --swiper-navigation-size: 35px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 960px) {
+    :root {
+        --swiper-navigation-size: 25px;
+    }
+    .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+}
+}

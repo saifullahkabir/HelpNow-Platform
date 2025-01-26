@@ -43,7 +43,7 @@ const Login = () => {
     return (
         <div className='pb-14 md:pb-20 xl:pb-24'>
             <section className="font-lato ">
-                <div className="container flex items-center justify-center mt-10 md:mt-16 lg:mt-20 xl:mt-28 px-6 mx-auto">
+                <div className="container flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40 px-6 mx-auto">
                     <div className="w-full max-w-md">
                         {/* <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt=""> */}
                         <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" />
@@ -63,6 +63,7 @@ const Login = () => {
                                     type="email"
                                     name='email'
                                     placeholder='Email address'
+                                    required
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
@@ -76,6 +77,7 @@ const Login = () => {
                                     type={showPassword ? "text" : "password"}
                                     placeholder='Password'
                                     name='password'
+                                    required
                                     className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                                 <span
