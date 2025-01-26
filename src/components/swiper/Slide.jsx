@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-
+import 'animate.css';
 const Slide = ({image, text,buttonText, title}) => {
     return (
         <div>
            <div
-            className='w-full  bg-center bg-cover h-[15rem] md:h-[25rem] lg:h-[30rem] xl:h-[35rem] 2xl:h-[42rem] '
+            className='animate__animated animate__fadeInUpBig w-full  bg-center bg-cover h-[15rem] md:h-[25rem] lg:h-[30rem] xl:h-[35rem] 2xl:h-[42rem] '
             style={{
                 backgroundImage: `url(${image})`,
                 
@@ -12,7 +12,7 @@ const Slide = ({image, text,buttonText, title}) => {
             }}
         >
             <div className='flex items-center justify-center w-full h-full bg-gray-900/40 rounded-2xl'>
-                <div className='text-center px-4'>
+                <div className='text-center px-4 animate__animated animate__fadeInLeftBig'>
                     <h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-1 md:mb-3 lg:mb-4'>
                        {title}
                     </h1>

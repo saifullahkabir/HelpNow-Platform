@@ -22,9 +22,11 @@ import bgImage5 from '../../assets/poor.jpg'
 import bgImage6 from '../../assets/animal.jpg'
 import bgImage7 from '../../assets/donation.jpg'
 
+import 'animate.css';
+
 const Carousel = () => {
     return (
-        <div className='relative  pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-10 md:pb-14 xl:pb-24'>
+        <div className='relative  pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-10 md:pb-14 xl:pb-24 '>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
