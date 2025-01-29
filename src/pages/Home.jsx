@@ -1,11 +1,11 @@
 import Carousel from "../components/swiper/Carousel";
-import VolunteerCard from "../components/VolunteerCard";
+import VolunteerNeeds from "../components/VolunteerNeeds";
 
 const Home = () => {
     return (
         <div>
             <Carousel></Carousel>
-            <VolunteerCard></VolunteerCard>
+            <VolunteerNeeds></VolunteerNeeds>
         </div>
     );
 };
