@@ -26,7 +26,7 @@ import 'animate.css';
 
 const Carousel = () => {
     return (
-        <div className='relative  pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-10 md:pb-14 xl:pb-24 '>
+        <div className='relative pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24 animate__animated animate__fadeInUpBig'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -40,7 +40,7 @@ const Carousel = () => {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className='mySwiper'
+                className='mySwiper '
             >
                 <SwiperSlide>
                     <Slide
@@ -84,7 +84,7 @@ const Carousel = () => {
                         text='Invite volunteers to provide support for animal shelters.'
                         buttonText="Post for Animal Care"></Slide>
                 </SwiperSlide>
-                <SwiperSlide>
+                <SwiperSlide className='rounded-3xl'>
                     <Slide image={bgImage7}
                         title='Donate to Make a Change'
                         text='Your contribution can help transform lives and communities.'

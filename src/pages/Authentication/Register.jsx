@@ -60,7 +60,7 @@ const Register = () => {
     return (
         <div className="pb-14 md:pb-20 xl:pb-24  ">
             <section className="font-lato ">
-                <div className="container flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40 px-6 mx-auto">
+                <div className=" flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40">
                     <div className="w-full max-w-md">
                         <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" />
                         <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl font-lato">sign Up</h1>

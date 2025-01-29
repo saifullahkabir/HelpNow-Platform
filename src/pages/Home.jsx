@@ -1,10 +1,11 @@
 import Carousel from "../components/swiper/Carousel";
+import VolunteerCard from "../components/VolunteerCard";
 
 const Home = () => {
     return (
         <div>
-            <h2>this is home</h2>
             <Carousel></Carousel>
+            <VolunteerCard></VolunteerCard>
         </div>
     );
 };

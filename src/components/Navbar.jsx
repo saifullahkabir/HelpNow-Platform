@@ -4,7 +4,7 @@ import logo from '../assets/volunteer.png'
 import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
-    const { user, logOut, loading } = useAuth();
+    const { user, logOut} = useAuth();
 
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -12,14 +12,12 @@ const Navbar = () => {
 
     </>
 
-    if (loading) {
-        return
-    }
+   
     return (
         <div className='relative mt-0 md:mt-3 z-40 '>
-            <div className='fixed top-0 right-0 left-0 bg-white shadow-md'>
+            <div className='fixed top-0 right-0 left-0 bg-none backdrop-blur-xl shadow-md  animate__animated animate__fadeInDownBig'>
                 <div className=' font-lato '>
-                    <div className="navbar container mx-auto px-4 md:px-10 lg:px-12 xl:px-0 ">
+                    <div className="navbar container mx-auto px-4 md:px-10 lg:px-12 xl:px-0  ">
                         <div className="navbar-start">
                             <div className="dropdown -ml-2">
                                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -63,7 +61,7 @@ const Navbar = () => {
                                 {!user &&
                                     <div className="navbar-end">
                                         <Link to='/login'>
-                                            <a className="btn btn-sm md:btn-md text-xs md:text-base  bg-[#797DFC] hover:bg-[#888cfcc0] text-white font-bold font-inter  md:px-6 rounded-3xl ">Login</a>
+                                            <a className="btn btn-sm md:btn-md text-xs md:text-base  bg-[#797DFC] hover:bg-[#888cfcc0] text-white font-bold font-inter  md:px-6 rounded-3xl border-none">Login</a>
                                         </Link>
                                     </div>
                                 }
