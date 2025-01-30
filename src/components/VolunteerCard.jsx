@@ -17,7 +17,10 @@ const VolunteerCard = ({ volunteerNeed }) => {
 
                     <div className="p-4 lg:p-6 ">
                         <div className="">
+                            <div className="flex justify-between">
                             <span className="text-xs font-medium text-[#797DFC] uppercase ">{category}</span>
+                            <span className="text-xs lg:text-sm font-medium text-gray-700">Deadline: {deadline}</span>
+                            </div>
                             <a href="#" className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform  hover:text-gray-600  hover:underline flex-grow" tabIndex={0} role="link">{postTitle}</a>
                             <p className="mt-2 text-sm text-gray-600 flex-grow">{description}</p>
                         </div>

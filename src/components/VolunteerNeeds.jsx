@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import VolunteerCard from "./VolunteerCard";
+import { Link } from "react-router-dom";
 
 
 const VolunteerNeeds = () => {
@@ -29,6 +30,11 @@ const VolunteerNeeds = () => {
                         volunteerNeed={volunteerNeed}
                     ></VolunteerCard>)
                 }
+            </div>
+            <div className="text-center mt-5 md:mt-8 lg:mt-10 xl:mt-12 ">
+                <Link className="btn-sm lg:btn-md btn btn-outline  border-[#797DFC] text-[#797DFC]  hover:bg-[#797DFC] hover:border-none">
+                <button className=" px-10 font-inter font-bold lg:text-base ">See all</button>
+                </Link>
             </div>
         </div>
     );
