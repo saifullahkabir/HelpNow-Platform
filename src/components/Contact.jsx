@@ -1,21 +1,28 @@
 import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 const Contact = () => {
     return (
         <div>
             <section className="">
                 <div className="container pb-10 md:pb-14 xl:pb-24 mx-auto">
-                    <div>
-                        <p className="font-medium text-[#797DFC] text-sm md:text-base"> <span className="border mr-2 border-[#797DFC]"></span> Contact us</p>
-                        <h1 className="mt-2 text-xl font-semibold text-gray-800 md:text-2xl lg:3xl">
+                    <div  className="">
+                        <Fade direction="left">
+                            <p  className="font-medium text-[#797DFC] text-sm md:text-base"> <span className="border mr-2 border-[#797DFC]"></span> Contact us</p>
+                        <h1  className="mt-2 text-xl font-semibold text-gray-800 md:text-2xl lg:3xl">
                             We’d love to hear from you
                         </h1>
-                        <p className="mt-2 xl:mt-3 text-gray-500 text-sm md:text-base">
+                        </Fade>
+                        <Fade direction="right" >
+                        <p  className="mt-2 xl:mt-3 text-gray-500 text-sm md:text-base">
                             Our friendly team is always here for you.
                         </p>
+                        </Fade>
                     </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-5 xl:gap-8 2xl:gap-12  mt-5 md:mt-8 lg:mt-10  ">
-                        <div className="p-3 rounded-lg bg-[rgba(162,166,255,0.45)] hover:bg-[rgba(162,167,255,0.74)] md:p-6 ">
+                    <Fade>
+                    <div  className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-5 xl:gap-8 2xl:gap-12  mt-5 md:mt-8 lg:mt-10  ">
+                        
+                        <div  className="p-3 rounded-lg bg-[rgba(162,166,255,0.45)] hover:bg-[rgba(162,167,255,0.74)] md:p-6 ">
                             <span className="inline-block p-2 md:p-3 text-black rounded-lg bg-[rgba(162,166,255,0.45)]">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -42,6 +49,7 @@ const Contact = () => {
                                 helpnow@platform.com
                             </p>
                         </div>
+                        
                         <div className="p-3 rounded-lg  md:p-6 bg-[rgba(162,166,255,0.45)] hover:bg-[rgba(162,167,255,0.74)]">
                             <span className="inline-block p-2 md:p-3 text-black rounded-lg bg-[rgba(162,166,255,0.45)]">
                                 <svg
@@ -136,6 +144,7 @@ const Contact = () => {
                             </p>
                         </div>
                     </div>
+                    </Fade>
                 </div>
             </section>
 
