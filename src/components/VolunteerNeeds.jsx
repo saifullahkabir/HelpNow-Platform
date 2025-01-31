@@ -38,7 +38,7 @@ const VolunteerNeeds = () => {
             </div>
             <div className="text-center mt-5 md:mt-8 lg:mt-10 xl:mt-12 ">
                 <Link className="btn-sm lg:btn-md btn btn-outline border-[#797DFC] text-[#797DFC]  hover:bg-[#797DFC] hover:border-none hover:text-white ">
-                <button className=" px-10 font-inter font-bold lg:text-base ">See all</button>
+                <button className="px-6 md:px-10 font-inter font-bold lg:text-base ">See all</button>
                 </Link>
             </div>
         </div>
