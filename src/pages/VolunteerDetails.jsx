@@ -1,7 +1,12 @@
 import { Link, useLoaderData } from "react-router-dom";
+// for animation
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 
 const VolunteerDetails = () => {
     const volunteerNeed = useLoaderData();
+   
     const {
         _id,
         thumbnail,
@@ -12,8 +17,11 @@ const VolunteerDetails = () => {
         location,
         deadline,
     } = volunteerNeed;
+    
     return (
-        <div className="pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24">
+        <div data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="500" className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
             <div className="mb-4 lg:mb-6">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center ">
