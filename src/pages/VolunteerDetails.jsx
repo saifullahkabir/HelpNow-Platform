@@ -54,7 +54,7 @@ const VolunteerDetails = () => {
                     </div>
                     <h2 className="card-title mt-3 md:mt-1 text-xl xl:text-2xl font-semibold text-gray-800">{postTitle}</h2>
                     <p className="text-sm lg:text-base text-gray-500 xl:w-[60%] mt-2 ">{description}</p>
-                    <p className="text-base lg:text-lg text-gray-700 mt-3 2xl:-mt-2">Location: {location}</p>
+                    <p className="text-base lg:text-lg text-gray-700 mt-3">Location: {location}</p>
 
                     <div className="card-actions justify-end  mt-6 mb-4 md:mb-0">
                         <Link className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">

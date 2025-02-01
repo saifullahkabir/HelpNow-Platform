@@ -5,7 +5,7 @@ const Contact = () => {
     return (
         <div>
             <section className="">
-                <div className="container pb-10 md:pb-14 xl:pb-24 mx-auto">
+                <div className="md:container pb-10 md:pb-14 xl:pb-24 md:mx-auto">
                     <div  className="">
                         <Fade direction="left">
                             <p  className="font-medium text-[#797DFC] text-sm md:text-base"> <span className="border mr-2 border-[#797DFC]"></span> Contact us</p>
