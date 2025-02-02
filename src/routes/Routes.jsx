@@ -6,6 +6,7 @@ import Register from "../pages/Authentication/Register";
 import ErrorPage from "../pages/ErrorPage";
 import VolunteerDetails from "../pages/VolunteerDetails";
 import PrivateRoute from "./PrivateRoute";
+import AddPost from "../pages/AddPost";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute><VolunteerDetails></VolunteerDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/volunteerNeed/${params.id}`)
       },
-
+      {
+        path: '/add-post',
+        element: <PrivateRoute><AddPost></AddPost></PrivateRoute>,
+      },
     ]
   },
 ]);
