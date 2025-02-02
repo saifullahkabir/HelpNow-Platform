@@ -58,7 +58,7 @@ const VolunteerDetails = () => {
 
                     <div className="card-actions justify-end  mt-6 mb-4 md:mb-0">
                         <Link className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">
-                            <button className=" xl:px-4  font-bold text-sm lg:text-base ">Be a Volunteer</button>
+                            <button className="   font-bold text-sm lg:text-base ">Be a Volunteer</button>
                         </Link>
                     </div>
                 </div>

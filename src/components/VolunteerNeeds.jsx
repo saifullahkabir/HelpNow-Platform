@@ -11,7 +11,10 @@ const VolunteerNeeds = () => {
     useEffect(() => {
         const getData = async () => {
             const { data } = await axiosCommon(`/volunteerNeeds`);
-            setVolunteerNeeds(data)
+            // setVolunteerNeeds(data || [])
+
+            // when data not available
+            setVolunteerNeeds(Array.isArray(data) ? data : [])
         }
         getData()
     }, [axiosCommon])
