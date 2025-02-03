@@ -7,6 +7,7 @@ import ErrorPage from "../pages/ErrorPage";
 import VolunteerDetails from "../pages/VolunteerDetails";
 import PrivateRoute from "./PrivateRoute";
 import AddPost from "../pages/AddPost";
+import ManageMyPosts from "../pages/ManageMyPosts";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/add-post',
         element: <PrivateRoute><AddPost></AddPost></PrivateRoute>,
+      },
+      {
+        path: '/my-post',
+        element: <PrivateRoute><ManageMyPosts></ManageMyPosts></PrivateRoute>,
       },
     ]
   },

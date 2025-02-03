@@ -11,7 +11,7 @@ const Faq = () => {
                 <div className="flex flex-col-reverse lg:flex-row gap-6 sm:gap-8 lg:gap-0">
 
                     <div className='lg:w-2/3'>
-                       <Fade direction='left'>
+                       <Fade direction='up'>
                        <div className="space-y-2 lg:space-y-4">
                             <div className="collapse collapse-arrow join-item border-[#797DFC] border">
                                 <input type="radio" name="my-accordion-4" defaultChecked />
@@ -39,7 +39,7 @@ const Faq = () => {
                     </div>
                     {/* Faq Image */}
                     <div className='sm:w-[400px] lg:w-[500px]  2xl:w-1/3  '>
-                        <Fade direction='right'>
+                        <Fade direction='down'>
                             <DotLottieReact
                                 src="https://lottie.host/73685fe1-921a-4302-9fd0-cbd414e449da/zjpYaL8imB.lottie"
                                 loop

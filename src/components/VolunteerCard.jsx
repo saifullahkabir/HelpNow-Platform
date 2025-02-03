@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const VolunteerCard = ({ volunteerNeed }) => {
@@ -12,7 +13,8 @@ const VolunteerCard = ({ volunteerNeed }) => {
     } = volunteerNeed;
     return (
         <div>
-            <Link to={`/volunteerNeed/${_id}`}>
+           <Fade>
+           <Link to={`/volunteerNeed/${_id}`}>
                 <div className="flex flex-col h-full ">
                     <div className="max-w-2xl h- overflow-hidden  rounded-lg shadow-md hover:scale-[1.05] transition-all flex flex-col h-full">
                         <div className="p-4 lg:p-6 rounded-2xl">
@@ -49,6 +51,7 @@ const VolunteerCard = ({ volunteerNeed }) => {
                     </div>
                 </div>
             </Link>
+           </Fade>
         </div>
     );
 };

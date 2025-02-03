@@ -13,13 +13,13 @@ const Contact = () => {
                             We’d love to hear from you
                         </h1>
                         </Fade>
-                        <Fade direction="right" >
+                        <Fade direction="zoom" >
                         <p  className="mt-2 xl:mt-3 text-gray-500 text-sm md:text-base">
                             Our friendly team is always here for you.
                         </p>
                         </Fade>
                     </div>
-                    <Fade>
+                    <Fade direction="down">
                     <div  className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-5 xl:gap-8 2xl:gap-12  mt-5 md:mt-8 lg:mt-10  ">
                         
                         <div  className="p-3 rounded-lg bg-[rgba(162,166,255,0.45)] hover:bg-[rgba(162,167,255,0.74)] md:p-6 ">
