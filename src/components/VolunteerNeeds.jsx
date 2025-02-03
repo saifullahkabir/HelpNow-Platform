@@ -34,7 +34,9 @@ const VolunteerNeeds = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8 xl:gap-8 2xl:gap-12  ">
                 {
-                    volunteerNeeds.map(volunteerNeed => <VolunteerCard
+                    volunteerNeeds
+                    .slice(0, 6)
+                    .map(volunteerNeed => <VolunteerCard
                         key={volunteerNeed._id}
                         volunteerNeed={volunteerNeed}
                     ></VolunteerCard>)
