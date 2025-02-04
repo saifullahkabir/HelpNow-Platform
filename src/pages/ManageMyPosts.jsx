@@ -4,20 +4,37 @@ import useAxiosCommon from '../hooks/useAxiosCommon';
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from 'react-icons/md';
 import { BiEdit } from 'react-icons/bi';
+import { useQuery } from '@tanstack/react-query';
 
 const ManageMyPosts = () => {
     const { user } = useAuth();
-    const [volunteerNeeds, setVolunteerNeeds] = useState([]);
+    // const [volunteerNeeds, setVolunteerNeeds] = useState([]);
     const axiosCommon = useAxiosCommon();
 
-    useEffect(() => {
-        getData();
-    }, [user])
+    // useEffect(() => {
+    //     getData();
+    // }, [user])
+
+    const {
+        data: volunteerNeeds = [],
+        isLoading,
+    } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['volunteerNeeds', user?.email]
+    })
 
     const getData = async () => {
         const { data } = await axiosCommon(`/volunteerNeeds/${user?.email}`);
-        setVolunteerNeeds(data);
+        return (Array.isArray(data) ? data : []);
+
     }
+
+    if(isLoading){
+        return <div className="flex justify-center mt-48 md:mt-60 xl:mt-72">
+            <span className="loader2"></span>
+        </div>
+    }
+
     return (
         <div className="pt-24 lg:pt-24 xl:pt-28 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
             <div className="-mx-2 md:-mx-0 dark:text-gray-800">
@@ -52,33 +69,33 @@ const ManageMyPosts = () => {
                                 <tbody>
                                     {
                                         volunteerNeeds.map(volunteerNeed =>
-                                            <tr
-                                                key={volunteerNeed._id}
-                                                className="border-b border-opacity-20 hover:border-gray-300 hover:bg-gray-50 text-gray-500 font-normal">
-                                                <td className="px-4 py-3 whitespace-nowrap">
-                                                    <p>{volunteerNeed.postTitle}</p>
-                                                </td>
-                                                <td className="px-4 py-3 whitespace-nowrap">
-                                                    <p>{new Date(volunteerNeed.deadline).toLocaleDateString()}</p>
-                                                </td>
-                                                <td className="px-4 py-3 whitespace-nowrap">
-                                                    <p>{volunteerNeed.location}</p>
+                                           <tr
+                                           key={volunteerNeed._id}
+                                           className="border-b border-opacity-20 hover:border-gray-300 hover:bg-gray-50 text-gray-500 font-normal">
+                                           <td className="px-4 py-3 whitespace-nowrap">
+                                               <p>{volunteerNeed.postTitle}</p>
+                                           </td>
+                                           <td className="px-4 py-3 whitespace-nowrap">
+                                               <p>{new Date(volunteerNeed.deadline).toLocaleDateString()}</p>
+                                           </td>
+                                           <td className="px-4 py-3 whitespace-nowrap">
+                                               <p>{volunteerNeed.location}</p>
 
-                                                </td>
-                                                <td className="px-12 py-3 whitespace-nowrap ">
-                                                    <p>{volunteerNeed.volunteersNeeded}</p>
+                                           </td>
+                                           <td className="px-12 py-3 whitespace-nowrap ">
+                                               <p>{volunteerNeed.volunteersNeeded}</p>
 
-                                                </td>
-                                                <td className="px-4 py-3 whitespace-nowrap">
-                                                    <p>{volunteerNeed.category}</p>
-                                                </td>
-                                                <td className="px-4 py-3 text-right whitespace-nowrap">
-                                                    <div className='flex items-center gap-3 md:gap-4 lg:gap-5  text-xl '>
-                                                        <BiEdit className='focus:text-[#797DFC] hover:text-[#797DFC] ' />
-                                                        <MdDeleteOutline className='focus:text-red-600 hover:text-red-600' />
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                           </td>
+                                           <td className="px-4 py-3 whitespace-nowrap">
+                                               <p>{volunteerNeed.category}</p>
+                                           </td>
+                                           <td className="px-4 py-3 text-right whitespace-nowrap">
+                                               <div className='flex items-center gap-3 md:gap-4 lg:gap-5  text-xl '>
+                                                   <BiEdit className='focus:text-[#797DFC] hover:text-[#797DFC] ' />
+                                                   <MdDeleteOutline className='focus:text-red-600 hover:text-red-600' />
+                                               </div>
+                                           </td>
+                                       </tr>
                                         )
 
                                     }
