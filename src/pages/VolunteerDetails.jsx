@@ -1,12 +1,13 @@
 import { Link, useLoaderData } from "react-router-dom";
 // for animation
 import AOS from 'aos';
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
+
 AOS.init();
 
 const VolunteerDetails = () => {
     const volunteerNeed = useLoaderData();
-   
+
     const {
         _id,
         thumbnail,
@@ -16,21 +17,29 @@ const VolunteerDetails = () => {
         volunteersNeeded,
         location,
         deadline,
+        postDate,
+        organizer,
     } = volunteerNeed || {};
     
+    // for 05 FEB 2025 this format
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const formattedDate = postDate ?
+        new Date(postDate).toLocaleDateString("en-GB", options).toUpperCase()
+        : "N/A";
+
     return (
         <div data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="500" className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
+            data-aos-easing="linear"
+            data-aos-duration="500" className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
             <div className="mb-4 lg:mb-6">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center ">
                         <div className="flex items-center gap-2 lg:gap-4">
-                            <img className="object-cover h-8 lg:h-10 rounded-full" src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60" alt="User photo" />
+                            <img className="object-cover h-8 lg:h-10 rounded-full" src={organizer?.photo} alt="User photo" />
 
                             <div className="flex flex-col ">
-                                <a href="#" className=" font-semibold  text-gray-800 text-sm lg:text-base" tabIndex={0} role="link">Saifullah Kabir Rana</a>
-                                <span className=" text-xs lg:text-sm text-gray-600 ">21 SEP 2015</span>
+                                <a href="#" className=" font-semibold  text-gray-800 text-sm lg:text-base" tabIndex={0} role="link">{organizer?.name}</a>
+                                <span className=" text-xs lg:text-sm text-gray-600 ">{formattedDate}</span>
                             </div>
                         </div>
 
@@ -50,7 +59,7 @@ const VolunteerDetails = () => {
                 <div className="md:card-body p-4 md:p-8 xl:p-16 sm:w-2/3 xl:w-3/5 ">
                     <div className="flex justify-between mt-2">
                         <span className="text-xs md:text-sm font-medium text-[#797DFC] uppercase ">{category}</span>
-                        <span className="text-xs md:font-sm lg:text-base font-medium text-gray-700">Deadline: {deadline}</span>
+                        <span className="text-xs md:font-sm lg:text-base font-medium text-gray-700">Deadline: {new Date(deadline).toLocaleDateString()}</span>
                     </div>
                     <h2 className="card-title mt-3 md:mt-1 text-xl xl:text-2xl font-semibold text-gray-800">{postTitle}</h2>
                     <p className="text-sm lg:text-base text-gray-500 xl:w-[60%] mt-2 ">{description}</p>

@@ -32,8 +32,6 @@ const UpdateVolunteersPost = () => {
         const volunteersNeeded = parseFloat(form.volunteersNeeded.value);
         const deadline = startDate.toUTCString();
         const description = form.description.value;
-        // const postDate = new Date().toISOString();
-        const postDate = new Date();
         
         const UpdateData = {
             postTitle,
@@ -43,7 +41,6 @@ const UpdateVolunteersPost = () => {
             volunteersNeeded,
             deadline,
             description,
-            postDate,
             organizer: {
                 name: user?.displayName,
                 email: user?.email,
