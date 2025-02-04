@@ -4,28 +4,72 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { BiEdit } from 'react-icons/bi';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
+
 
 const ManageMyPosts = () => {
     const { user } = useAuth();
-    // const [volunteerNeeds, setVolunteerNeeds] = useState([]);
     const axiosCommon = useAxiosCommon();
 
-    // useEffect(() => {
-    //     getData();
-    // }, [user])
-
-    const {
-        data: volunteerNeeds = [],
-        isLoading,
-    } = useQuery({
-        queryFn: () => getData(),
-        queryKey: ['volunteerNeeds', user?.email]
-    })
-    console.log(volunteerNeeds);
     const getData = async () => {
         const { data } = await axiosCommon(`/volunteerNeeds/${user?.email}`);
         return (Array.isArray(data) ? data : []);
 
+    }
+
+    // using tanstack query
+    const {
+        data: volunteerNeeds = [],
+        isLoading,
+        refetch,
+    } = useQuery({
+        queryFn: getData,
+        queryKey: ['volunteerNeeds', user?.email]
+    })
+    console.log(volunteerNeeds);
+
+    // delete my post
+    const handleDelete = async id => {
+       // Confirmation Popup
+       const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#29B170",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    });
+
+    // if the user confirms, it will be deleted
+    if(result?.isConfirmed){
+        try{
+            const response = await axiosCommon.delete(`/volunteerNeed/${id}`);
+
+            if(response.data.deletedCount > 0){
+                // ui update
+                refetch();
+                // Success Message
+                await Swal.fire({
+                    title: "Deleted!",
+                    text: "Your post has been deleted.",
+                    icon: "success",
+                    confirmButtonColor: "#29B170"
+                });
+                
+            }
+
+        }
+        catch(err){
+            console.log('Delete failed:', err);
+            Swal.fire({
+                title: "Error!",
+                text: "Something went wrong. Please try again.",
+                icon: "error",
+                confirmButtonColor: "#d33"
+            });
+        }
+    }
     }
 
     if (isLoading) {
@@ -93,7 +137,7 @@ const ManageMyPosts = () => {
                                                         <Link to={`/update-post/${volunteerNeed._id}`}>
                                                             <BiEdit className='focus:text-[#797DFC] hover:text-[#797DFC] ' />
                                                         </Link>
-                                                        <MdDeleteOutline className='focus:text-red-600 hover:text-red-600' />
+                                                        <MdDeleteOutline onClick={() => handleDelete(volunteerNeed._id)} className='focus:text-red-600 hover:text-red-600' />
                                                     </div>
                                                 </td>
                                             </tr>
