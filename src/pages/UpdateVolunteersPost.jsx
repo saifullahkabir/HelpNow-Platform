@@ -1,16 +1,28 @@
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import useAxiosCommon from "../hooks/useAxiosCommon";
-import toast from "react-hot-toast";
+import DatePicker from "react-datepicker";
+import { useLoaderData } from "react-router-dom";
 
-const AddPost = () => {
+const UpdateVolunteersPost = () => {
+    const volunteerNeed = useLoaderData();
     const { user } = useAuth();
-    const [startDate, setStartDate] = useState(new Date());
     const axiosCommon = useAxiosCommon();
+    const {
+        _id,
+        thumbnail,
+        postTitle,
+        description,
+        category,
+        volunteersNeeded,
+        location,
+        deadline,
+    } = volunteerNeed || {};
+    const [startDate, setStartDate] = useState(deadline ? new Date(deadline) : new Date());
+    
 
-    const handleAddVolunteer = async e => {
+    const handleUpdateVolunteer = async e => {
         e.preventDefault();
         const form = e.target;
         const postTitle = form.postTitle.value;
@@ -22,8 +34,8 @@ const AddPost = () => {
         const description = form.description.value;
         // const postDate = new Date().toISOString();
         const postDate = new Date();
-
-        const volunteerData = {
+        
+        const UpdateData = {
             postTitle,
             thumbnail,
             location,
@@ -41,22 +53,23 @@ const AddPost = () => {
         }
 
         try {
-            const { data } = await axiosCommon.post(`/volunteerNeed`, volunteerData);
+            const { data } = await axiosCommon.put(`/volunteerNeed/${_id}`, UpdateData);
             console.log(data);
-            toast.success('Post added successfully!')
+            toast.success('Update successfully!')
         }
         catch (err) {
             toast.error(err?.code);
         }
     }
+
     return (
         <div className='flex justify-center items-center  pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24 animate__animated animate__zoomIn'>
             <section className='mx-0 md:mx-[5%] lg:mx-[10%] xl:mx-[20%] 2xl:mx-[25%] w-full p-4 md:p-6 bg-white rounded-md shadow-md '>
                 <h2 className='text-lg font-semibold text-gray-700 capitalize text-center font-inter'>
-                    Add Volunteer Post
+                    Update Volunteer Post
                 </h2>
 
-                <form onSubmit={handleAddVolunteer}>
+                <form onSubmit={handleUpdateVolunteer}>
                     <div className='grid grid-cols-1  gap-3 md:gap-6 mt-6 sm:grid-cols-2 text-sm lg:text-base'>
                         <div>
                             <label className='text-gray-700 ' htmlFor='job_title'>
@@ -66,6 +79,7 @@ const AddPost = () => {
                                 id='postTitle'
                                 name='postTitle'
                                 type='text'
+                                defaultValue={postTitle}
                                 required
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -78,6 +92,7 @@ const AddPost = () => {
                                 id='thumbnail'
                                 name='thumbnail'
                                 type='url'
+                                defaultValue={thumbnail}
                                 required
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -90,6 +105,7 @@ const AddPost = () => {
                                 id='location'
                                 name='location'
                                 type='text'
+                                defaultValue={location}
                                 required
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -102,6 +118,7 @@ const AddPost = () => {
                             <select
                                 name='category'
                                 id='category'
+                                defaultValue={category}
                                 className='border p-2 rounded-md'
                             >
                                 <option value='Healthcare'>Healthcare</option>
@@ -118,6 +135,7 @@ const AddPost = () => {
                                 id='volunteersNeeded'
                                 name='volunteersNeeded'
                                 type='number'
+                                defaultValue={volunteersNeeded}
                                 required
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -171,12 +189,13 @@ const AddPost = () => {
                             className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             name='description'
                             id='description'
+                            defaultValue={description}
                             required
                         ></textarea>
                     </div>
                     <div className='flex justify-end mt-4 md:mt-6'>
                         <button className='btn-sm lg:btn-md btn bg-[#797DFC] hover:bg-[#888cfcc0] text-white '>
-                            Add Post
+                            Update Post
                         </button>
                     </div>
                 </form>
@@ -185,4 +204,4 @@ const AddPost = () => {
     );
 };
 
-export default AddPost;
+export default UpdateVolunteersPost;

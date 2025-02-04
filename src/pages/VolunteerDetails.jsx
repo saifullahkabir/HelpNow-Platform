@@ -16,7 +16,7 @@ const VolunteerDetails = () => {
         volunteersNeeded,
         location,
         deadline,
-    } = volunteerNeed;
+    } = volunteerNeed || {};
     
     return (
         <div data-aos="fade-down"
