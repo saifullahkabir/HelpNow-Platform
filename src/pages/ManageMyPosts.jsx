@@ -5,6 +5,8 @@ import { BiEdit } from 'react-icons/bi';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
+import noData from '../assets/noData.gif'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
 const ManageMyPosts = () => {
@@ -30,46 +32,46 @@ const ManageMyPosts = () => {
 
     // delete my post
     const handleDelete = async id => {
-       // Confirmation Popup
-       const result = await Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonColor: "#29B170",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-    });
+        // Confirmation Popup
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#29B170",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        });
 
-    // if the user confirms, it will be deleted
-    if(result?.isConfirmed){
-        try{
-            const response = await axiosCommon.delete(`/volunteerNeed/${id}`);
+        // if the user confirms, it will be deleted
+        if (result?.isConfirmed) {
+            try {
+                const response = await axiosCommon.delete(`/volunteerNeed/${id}`);
 
-            if(response.data.deletedCount > 0){
-                // ui update
-                refetch();
-                // Success Message
-                await Swal.fire({
-                    title: "Deleted!",
-                    text: "Your post has been deleted.",
-                    icon: "success",
-                    confirmButtonColor: "#29B170"
-                });
-                
+                if (response.data.deletedCount > 0) {
+                    // ui update
+                    refetch();
+                    // Success Message
+                    await Swal.fire({
+                        title: "Deleted!",
+                        text: "Your post has been deleted.",
+                        icon: "success",
+                        confirmButtonColor: "#29B170"
+                    });
+
+                }
+
             }
-
+            catch (err) {
+                console.log('Delete failed:', err);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong. Please try again.",
+                    icon: "error",
+                    confirmButtonColor: "#d33"
+                });
+            }
         }
-        catch(err){
-            console.log('Delete failed:', err);
-            Swal.fire({
-                title: "Error!",
-                text: "Something went wrong. Please try again.",
-                icon: "error",
-                confirmButtonColor: "#d33"
-            });
-        }
-    }
     }
 
     if (isLoading) {
@@ -151,8 +153,14 @@ const ManageMyPosts = () => {
                     </>
                         :
                         <>
-                            <div>
-                                <h2 className='text-3xl text-center py-52'>Data Not Found</h2>
+                            <div className='flex justify-center '>
+                                {/* <img className='w-[400px]' src={noData} alt="" /> */}
+                                <DotLottieReact 
+                                className='rounded-full w-[700px] '
+                                    src="https://lottie.host/d1cb8cc5-979f-4f7c-8733-8c32f07f0e42/rWru8w7Q6z.lottie"
+                                    loop
+                                    autoplay
+                                />
                             </div>
                         </>
                 }
