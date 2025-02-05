@@ -5,7 +5,6 @@ import { BiEdit } from 'react-icons/bi';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
-import noData from '../assets/noData.gif'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
@@ -154,7 +153,7 @@ const ManageMyPosts = () => {
                         :
                         <>
                             <div className='flex justify-center '>
-                                {/* <img className='w-[400px]' src={noData} alt="" /> */}
+                                
                                 <DotLottieReact 
                                 className='rounded-full w-[700px] '
                                     src="https://lottie.host/d1cb8cc5-979f-4f7c-8733-8c32f07f0e42/rWru8w7Q6z.lottie"

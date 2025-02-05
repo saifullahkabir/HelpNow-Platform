@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../../assets/volunteer.png'
 import { useState } from "react";
 import { VscEye } from "react-icons/vsc";
@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, signInWithGoogle, updateUserProfile, setUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
     const [registerError, setRegisterError] = useState('');
 
     const handleGoogleSignUp = async () => {
@@ -15,6 +17,7 @@ const Register = () => {
             const result = await signInWithGoogle();
             console.log(result.user);
             toast.success('SignUp Successfully');
+            navigate(location?.state ? location?.state : '/', { replace: true });
         }
         catch (err) {
             console.log(err);
@@ -48,7 +51,8 @@ const Register = () => {
             await updateUserProfile(name, photo);
             // Optimistic UI update
             setUser({ ...result?.user, photoURL: photo, displayName: name });
-            toast.success('SignUp Successfully')
+            toast.success('SignUp Successfully');
+            navigate(location?.state ? location?.state : '/', { replace: true });
 
         }
         catch (err) {

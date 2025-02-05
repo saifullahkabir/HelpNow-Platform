@@ -3,12 +3,13 @@ import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import useAxiosCommon from "../hooks/useAxiosCommon";
 import DatePicker from "react-datepicker";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateVolunteersPost = () => {
     const volunteerNeed = useLoaderData();
     const { user } = useAuth();
     const axiosCommon = useAxiosCommon();
+    const navigate = useNavigate();
     const {
         _id,
         thumbnail,
@@ -52,7 +53,8 @@ const UpdateVolunteersPost = () => {
         try {
             const { data } = await axiosCommon.put(`/volunteerNeed/${_id}`, UpdateData);
             console.log(data);
-            toast.success('Update successfully!')
+            toast.success('Update successfully!');
+            navigate('/my-post');
         }
         catch (err) {
             toast.error(err?.code);

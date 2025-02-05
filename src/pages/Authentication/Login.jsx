@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/volunteer.png'
 import { useState } from 'react';
 import { VscEye, VscEyeClosed } from 'react-icons/vsc';
@@ -8,14 +8,15 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signIn, signInWithGoogle } = useAuth();
     const [loginError, setLoginError] = useState(true);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleGoogleSignIn = async () => {
         try {
             const result = await signInWithGoogle();
             console.log(result.user);
             toast.success('Signin Successfully');
-            navigate('/')
+            navigate(location?.state ? location?.state : '/', { replace: true });
         }
         catch (err) {
             console.log(err);
@@ -36,7 +37,7 @@ const Login = () => {
             const result = await signIn(email, password);
             console.log(result.user);
             toast.success('SignIn Successfully')
-            navigate('/')
+            navigate(location?.state ? location?.state : '/', { replace: true });
         }
         catch (err) {
             console.log(err);

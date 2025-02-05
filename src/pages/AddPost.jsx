@@ -4,11 +4,13 @@ import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import useAxiosCommon from "../hooks/useAxiosCommon";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddPost = () => {
     const { user } = useAuth();
     const [startDate, setStartDate] = useState(new Date());
     const axiosCommon = useAxiosCommon();
+    const navigate = useNavigate();
 
     const handleAddVolunteer = async e => {
         e.preventDefault();
@@ -43,7 +45,8 @@ console.log(postDate, 'postDate heheheheh');
         try {
             const { data } = await axiosCommon.post(`/volunteerNeed`, volunteerData);
             console.log(data);
-            toast.success('Post added successfully!')
+            toast.success('Post added successfully!');
+            navigate('/my-post');
         }
         catch (err) {
             toast.error(err?.code);
