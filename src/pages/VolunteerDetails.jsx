@@ -38,8 +38,8 @@ const VolunteerDetails = () => {
                             <img className="object-cover h-8 lg:h-10 rounded-full" src={organizer?.photo} alt="User photo" />
 
                             <div className="flex flex-col ">
-                                <a href="#" className=" font-semibold  text-gray-800 text-sm lg:text-base" tabIndex={0} role="link">{organizer?.name}</a>
-                                <span className=" text-xs lg:text-sm text-gray-600 ">{formattedDate}</span>
+                                <a href="#" className=" font-semibold  opacity-95 text-sm lg:text-base" tabIndex={0} role="link">{organizer?.name}</a>
+                                <span className=" text-xs lg:text-sm text-gray-80 ">{formattedDate}</span>
                             </div>
                         </div>
 
@@ -49,21 +49,21 @@ const VolunteerDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="card sm:card-side bg-base-100 shadow-xl ">
+            <div className="card sm:card-side bg-base-100 shadow-xl  ">
                 <figure className="sm:w-1/3 xl:w-2/5">
                     <img
-                        className="w-full h-full"
+                        className="w-full h-full "
                         src={thumbnail}
                         alt="Album" />
                 </figure>
                 <div className="md:card-body p-4 md:p-8 xl:p-16 sm:w-2/3 xl:w-3/5 ">
                     <div className="flex justify-between mt-2">
                         <span className="text-xs md:text-sm font-medium text-[#797DFC] uppercase ">{category}</span>
-                        <span className="text-xs md:font-sm lg:text-base font-medium text-gray-700">Deadline: {new Date(deadline).toLocaleDateString()}</span>
+                        <span className="text-xs md:font-sm lg:text-base font-medium opacity-85">Deadline: {new Date(deadline).toLocaleDateString()}</span>
                     </div>
-                    <h2 className="card-title mt-3 md:mt-1 text-xl xl:text-2xl font-semibold text-gray-800">{postTitle}</h2>
-                    <p className="text-sm lg:text-base text-gray-500 xl:w-[60%] mt-2 ">{description}</p>
-                    <p className="text-base lg:text-lg text-gray-700 mt-3">Location: {location}</p>
+                    <h2 className="card-title mt-3 md:mt-1 text-xl xl:text-2xl font-semibold opacity-95">{postTitle}</h2>
+                    <p className="text-sm lg:text-base opacity-75 xl:w-[60%] mt-2 ">{description}</p>
+                    <p className="text-base lg:text-lg opacity-85 mt-3">Location: {location}</p>
 
                     <div className="card-actions justify-end  mt-6 mb-4 md:mb-0">
                         <Link className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">

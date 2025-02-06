@@ -54,15 +54,15 @@ console.log(postDate, 'postDate heheheheh');
     }
     return (
         <div className='flex justify-center items-center  pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24 animate__animated animate__zoomIn'>
-            <section className='mx-0 md:mx-[5%] lg:mx-[10%] xl:mx-[20%] 2xl:mx-[25%] w-full p-4 md:p-6 bg-white rounded-md shadow-md '>
-                <h2 className='text-lg font-semibold text-gray-700 capitalize text-center font-inter'>
+            <section className='mx-0 md:mx-[5%] lg:mx-[10%] xl:mx-[20%] 2xl:mx-[25%] w-full p-4 md:p-6  rounded-md shadow-md '>
+                <h2 className='text-lg font-semibold opacity-95 capitalize text-center font-inter'>
                     Add Volunteer Post
                 </h2>
 
                 <form onSubmit={handleAddVolunteer}>
                     <div className='grid grid-cols-1  gap-3 md:gap-6 mt-6 sm:grid-cols-2 text-sm lg:text-base'>
                         <div>
-                            <label className='text-gray-700 ' htmlFor='job_title'>
+                            <label className='opacity-90 ' htmlFor='job_title'>
                                 Post Title
                             </label>
                             <input
@@ -70,11 +70,11 @@ console.log(postDate, 'postDate heheheheh');
                                 name='postTitle'
                                 type='text'
                                 required
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90  border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
                         <div>
-                            <label className='text-gray-700 ' htmlFor='job_title'>
+                            <label className='opacity-90 ' htmlFor='job_title'>
                                 Thumbnail
                             </label>
                             <input
@@ -82,11 +82,11 @@ console.log(postDate, 'postDate heheheheh');
                                 name='thumbnail'
                                 type='url'
                                 required
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90  border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
                         <div>
-                            <label className='text-gray-700 ' htmlFor='job_title'>
+                            <label className='opacity-90 ' htmlFor='job_title'>
                                 Location
                             </label>
                             <input
@@ -94,12 +94,12 @@ console.log(postDate, 'postDate heheheheh');
                                 name='location'
                                 type='text'
                                 required
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
 
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-gray-700 ' htmlFor='category'>
+                            <label className='opacity-90 ' htmlFor='category'>
                                 Category
                             </label>
                             <select
@@ -116,7 +116,7 @@ console.log(postDate, 'postDate heheheheh');
                             </select>
                         </div>
                         <div>
-                            <label className='text-gray-700 ' htmlFor='min_price'>
+                            <label className='opacity-90 ' htmlFor='min_price'>
                                 No. of volunteers needed
                             </label>
                             <input
@@ -124,21 +124,21 @@ console.log(postDate, 'postDate heheheheh');
                                 name='volunteersNeeded'
                                 type='number'
                                 required
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
 
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-gray-700'>Deadline</label>
+                            <label className='opacity-90'>Deadline</label>
 
                             {/* Date Picker Input Field */}
                             <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
-                                className="p-2 w-full px-4 text-gray-700 bg-white border border-gray-200 rounded-md   focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring "
+                                className="p-2 w-full px-4 opacity-90 border border-gray-200 rounded-md   focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring "
                             />
                         </div>
 
                         <div>
-                            <label className='text-gray-700 ' htmlFor='emailAddress'>
+                            <label className='opacity-90 ' htmlFor='emailAddress'>
                                 Name
                             </label>
                             <input
@@ -148,11 +148,11 @@ console.log(postDate, 'postDate heheheheh');
                                 disabled
                                 defaultValue={user?.displayName}
                                 title={user?.displayName}
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
                         <div>
-                            <label className='text-gray-700 ' htmlFor='emailAddress'>
+                            <label className='opacity-90 ' htmlFor='emailAddress'>
                                 Email Address
                             </label>
                             <input
@@ -162,18 +162,18 @@ console.log(postDate, 'postDate heheheheh');
                                 disabled
                                 defaultValue={user?.email}
                                 title={user?.email}
-                                className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
 
 
                     </div>
                     <div className='flex flex-col gap-2 mt-3 md:mt-6 text-sm lg:text-base'>
-                        <label className='text-gray-700 ' htmlFor='description'>
+                        <label className='opacity-90 ' htmlFor='description'>
                             Description
                         </label>
                         <textarea
-                            className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                            className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             name='description'
                             id='description'
                             required

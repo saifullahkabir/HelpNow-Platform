@@ -81,7 +81,7 @@ const ManageMyPosts = () => {
 
     return (
         <div className="pt-24 lg:pt-24 xl:pt-28 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
-            <div className="-mx-2 md:-mx-0 dark:text-gray-800">
+            <div className="-mx-2 md:-mx-0 opacity-95">
                 <div className="flex items-center gap-x-3 mb-4">
                     <h2 className=" text-lg md:text-xl  font-semibold leading-tight">My Need Volunteers</h2>
                     <span className='px-3 py-1 text-xs md:text-sm bg-[#a8abff4b]  text-[#797DFC] rounded-full '>
@@ -90,8 +90,8 @@ const ManageMyPosts = () => {
                 </div>
                 {
                     volunteerNeeds?.length > 0 ? <>
-                        <div className="overflow-x-auto rounded-lg shadow-sm">
-                            <table className=" min-w-full text-xs lg:text-sm">
+                        <div className="overflow-x-auto rounded-lg shadow-sm border">
+                            <table className=" min-w-full text-xs lg:text-sm ">
                                 <colgroup>
                                     <col />
                                     <col />
@@ -100,8 +100,8 @@ const ManageMyPosts = () => {
                                     <col />
                                     <col className="w-24" />
                                 </colgroup>
-                                <thead className="bg-gray-100">
-                                    <tr className="text-left">
+                                <thead className=" bg-gray-100">
+                                    <tr className="text-left opacity-75 text-black">
                                         <th className="px-4 py-3">Title</th>
                                         <th className="px-4 py-3">Deadline</th>
                                         <th className="px-4 py-3">Location</th>
@@ -115,7 +115,7 @@ const ManageMyPosts = () => {
                                         volunteerNeeds.map(volunteerNeed =>
                                             <tr
                                                 key={volunteerNeed._id}
-                                                className="border-b border-opacity-20 hover:border-gray-300 hover:bg-gray-50 text-gray-500 font-normal">
+                                                className="border-b border-opacity-20 hover:border-gray-300 hover:bg-gray-50 hover:bg-opacity-90 opacity-90 hover:opacity-85 font-normal hover:text-black">
                                                 <td className="px-4 py-3 whitespace-nowrap">
                                                     <p>{volunteerNeed.postTitle}</p>
                                                 </td>

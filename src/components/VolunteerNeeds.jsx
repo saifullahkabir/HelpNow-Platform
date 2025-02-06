@@ -28,7 +28,7 @@ const VolunteerNeeds = () => {
                     </Fade>
                     <Zoom>
 
-                    <p className="max-w-xl mx-auto mt-2 lg:mt-3 text-gray-500 text-sm lg:text-base">Join urgent volunteer opportunities and bring positive change to society. Your support can be a beacon of hope for those in need.</p>
+                    <p className="max-w-xl mx-auto mt-2 lg:mt-3 opacity-75 text-sm lg:text-base">Join urgent volunteer opportunities and bring positive change to society. Your support can be a beacon of hope for those in need.</p>
                     </Zoom>
                 </div>
             </div>

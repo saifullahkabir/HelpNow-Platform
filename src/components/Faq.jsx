@@ -17,21 +17,21 @@ const Faq = () => {
                                 <input type="radio" name="my-accordion-4" defaultChecked />
                                 <div className="collapse-title text-base lg:text-lg xl:text-xl font-medium">How do I sign up?</div>
                                 <div className="collapse-content">
-                                    <p className='text-sm lg:text-base text-gray-600 opacity-90'>Register on our website and choose a volunteer activity.</p>
+                                    <p className='text-sm lg:text-base opacity-75'>Register on our website and choose a volunteer activity.</p>
                                 </div>
                             </div>
                             <div className="collapse collapse-arrow join-item border-[#797DFC] border">
                                 <input type="radio" name="my-accordion-4" />
                                 <div className="collapse-title text-base lg:text-lg xl:text-xl font-medium">Do I need experience?</div>
                                 <div className="collapse-content">
-                                    <p className='text-sm lg:text-base text-gray-600 opacity-90'>No, anyone can volunteer! We provide guidance.</p>
+                                    <p className='text-sm lg:text-base opacity-75'>No, anyone can volunteer! We provide guidance.</p>
                                 </div>
                             </div>
                             <div className="collapse collapse-arrow join-item border-[#797DFC] border">
                                 <input type="radio" name="my-accordion-4" />
                                 <div className="collapse-title text-base lg:text-lg xl:text-xl font-medium">Can I pick my task?</div>
                                 <div className="collapse-content">
-                                    <p className='text-sm lg:text-base text-gray-600 opacity-90'>Yes! Choose from various activities that match your interest.</p>
+                                    <p className='text-sm lg:text-base opacity-75'>Yes! Choose from various activities that match your interest.</p>
                                 </div>
                             </div>
                         </div>

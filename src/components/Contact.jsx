@@ -9,12 +9,12 @@ const Contact = () => {
                     <div  className="">
                         <Fade direction="left">
                             <p  className="font-medium text-[#797DFC] text-sm md:text-base"> <span className="border mr-2 border-[#797DFC]"></span> Contact us</p>
-                        <h1  className="mt-2 text-xl font-semibold text-gray-800 md:text-2xl lg:3xl">
+                        <h1  className="mt-2 text-xl font-semibold opacity-95 md:text-2xl lg:3xl">
                             We’d love to hear from you
                         </h1>
                         </Fade>
                         <Fade direction="zoom" >
-                        <p  className="mt-2 xl:mt-3 text-gray-500 text-sm md:text-base">
+                        <p  className="mt-2 xl:mt-3 opacity-75 text-sm md:text-base">
                             Our friendly team is always here for you.
                         </p>
                         </Fade>
@@ -39,13 +39,13 @@ const Contact = () => {
                                     />
                                 </svg>
                             </span>
-                            <h2 className="mt-2 md:mt-4 text-base font-semibold text-gray-800">
+                            <h2 className="mt-2 md:mt-4 text-base font-semibold opacity-95">
                                 Chat to need
                             </h2>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-500">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm opacity-85">
                                 Speak to our friendly team.
                             </p>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#797DFC]">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#4c52e9]">
                                 helpnow@platform.com
                             </p>
                         </div>
@@ -72,13 +72,13 @@ const Contact = () => {
                                     />
                                 </svg>
                             </span>
-                            <h2 className="mt-2 md:mt-4 text-base font-semibold text-gray-800">
+                            <h2 className="mt-2 md:mt-4 text-base font-semibold opacity-95">
                                 Chat to support
                             </h2>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-500">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm opacity-85">
                                 We’re here to help.
                             </p>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#797DFC]">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#4c52e9]">
                                 <Link className="hover:underline" to='/no-chat'>
                                 Start new chat
                                 </Link>
@@ -106,13 +106,13 @@ const Contact = () => {
                                     />
                                 </svg>
                             </span>
-                            <h2 className="mt-2 md:mt-4 text-base font-semibold text-gray-800">
+                            <h2 className="mt-2 md:mt-4 text-base font-semibold opacity-95">
                                 Visit us
                             </h2>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-500">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm opacity-85">
                                 Visit our office 
                             </p>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#797DFC]">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#4c52e9]">
                             45 Station Road, Chattogram, Bangladesh
                             </p>
                         </div>
@@ -133,13 +133,13 @@ const Contact = () => {
                                     />
                                 </svg>
                             </span>
-                            <h2 className="mt-2 md:mt-4 text-base font-semibold text-gray-800">
+                            <h2 className="mt-2 md:mt-4 text-base font-semibold opacity-95">
                                 Call us
                             </h2>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-gray-500">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm opacity-85">
                                 Mon-Fri from 8am to 5pm.
                             </p>
-                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#797DFC]">
+                            <p className="mt-1 md:mt-2 text-xs md:text-sm text-[#4c52e9]">
                                 +1 (555) 000-0000
                             </p>
                         </div>
