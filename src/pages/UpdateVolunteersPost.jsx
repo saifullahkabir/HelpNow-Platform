@@ -124,6 +124,8 @@ const UpdateVolunteersPost = () => {
                                 <option value='Education'>Education</option>
                                 <option value='Social Service'>Social Service</option>
                                 <option value='Animal Welfare'>Animal Welfare</option>
+                                <option value='Tree Plantation'>Tree Plantation</option>
+                                <option value='Donation'>Donation</option>
                             </select>
                         </div>
                         <div>

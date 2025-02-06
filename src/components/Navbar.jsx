@@ -2,6 +2,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/volunteer.png'
 import useAuth from '../hooks/useAuth';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
     const { user, logOut} = useAuth();
@@ -56,7 +57,11 @@ const Navbar = () => {
                             </ul>
                         </div>
                         {/* user verification*/}
-                        <div className="navbar-end">
+                        <div className="navbar-end gap-3 md:gap-6">
+                            <div className=''>
+                                <ThemeToggle></ThemeToggle>
+                            </div>
+                            <div>
                             <div>
                                 {!user &&
                                     <div className="navbar-end">
@@ -104,6 +109,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 }
+                            </div>
                             </div>
                         </div>
                         

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from '../../assets/volunteer.png'
+// import logo from '../../assets/volunteer.png'
 import { useState } from "react";
 import { VscEye } from "react-icons/vsc";
 import { VscEyeClosed } from "react-icons/vsc";
@@ -43,7 +43,7 @@ const Register = () => {
         else if (!/[a-z]/.test(password)) {
             return setRegisterError('password should have at least one lower case character')
         }
-
+        
         setRegisterError('');
 
         try {
@@ -66,7 +66,7 @@ const Register = () => {
             <section className="font-lato ">
                 <div className=" flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40">
                     <div className="w-full max-w-md">
-                        <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" />
+                        {/* <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" /> */}
                         <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl font-lato">sign Up</h1>
 
                         <form
