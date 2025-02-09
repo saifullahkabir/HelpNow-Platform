@@ -40,7 +40,7 @@ const VolunteerDetails = () => {
 
                             <div className="flex flex-col ">
                                 <a href="#" className=" font-semibold  opacity-95 text-sm lg:text-base" tabIndex={0} role="link">{organizer?.name}</a>
-                                <span className=" text-xs lg:text-sm text-gray-80 ">{formattedDate}</span>
+                                <span className=" text-xs lg:text-sm opacity-80 font-lato ">{formattedDate}</span>
                             </div>
                         </div>
 

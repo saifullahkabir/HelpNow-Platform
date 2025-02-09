@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 
 
@@ -13,21 +14,50 @@ const BeAVolunteer = ({ volunteerNeed }) => {
         volunteersNeeded,
         location,
         deadline,
-        postDate,
         organizer,
     } = volunteerNeed || {};
 
     const handleBeAVolunteer = async e => {
         e.preventDefault();
+        if (user?.email === organizer?.email) {
+            toast.error('You can not volunteer request in own post!');
+            // Modal Close
+            document.getElementById("my_modal_3").close();
+            return;
+        }
         const form = e.target;
-        
+        const volunteerId = _id;
+        const email = user?.email;
+        const name = user?.displayName;
+        const photo = user?.photoURL;
+        const suggestion = form.suggestion.value.trim() || "N/A";
+        const status = 'Requested';
+
+        const volunteerData = {
+            volunteerId,
+            postTitle,
+            thumbnail,
+            description,
+            category, 
+            volunteersNeeded,
+            location,
+            organizer,
+            volunteer: {
+                name,
+                email,
+                photo
+            },
+            suggestion,
+            status
+        }
+        console.log(volunteerData, 'volunteer data');
     }
 
     return (
         <div>
             <div className='flex justify-center items-center  '>
                 <section className='w-full md:px-4 lg:px-8 xl:px-14 py-2 md:py-4 lg:py-6 xl:py-10 '>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between mt-2 md:mt-0">
                         <h2 className='text-lg font-semibold opacity-95 capitalize  font-inter'>
                             Be a Volunteer
                         </h2>
@@ -123,14 +153,14 @@ const BeAVolunteer = ({ volunteerNeed }) => {
                                     type='text'
                                     name='name'
                                     disabled
-                                    defaultValue={deadline}
+                                    defaultValue={new Date(deadline).toLocaleDateString()}
                                     className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                 />
                             </div>
 
                             <div>
                                 <label className='opacity-90 ' htmlFor='emailAddress'>
-                                    Name
+                                    Organizer Name
                                 </label>
                                 <input
                                     id='name'
@@ -144,7 +174,7 @@ const BeAVolunteer = ({ volunteerNeed }) => {
                             </div>
                             <div>
                                 <label className='opacity-90 ' htmlFor='emailAddress'>
-                                    Email Address
+                                    Organizer Email Address
                                 </label>
                                 <input
                                     id='emailAddress'
@@ -195,6 +225,7 @@ const BeAVolunteer = ({ volunteerNeed }) => {
                                 className='block w-full px-4 py-2 mt-2 opacity-90 border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                                 name='description'
                                 id='description'
+                                disabled
                                 defaultValue={description}
                                 required
                             ></textarea>

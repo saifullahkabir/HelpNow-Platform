@@ -12,6 +12,7 @@
 }
 
 
+
 .loader {
   animation: rotate 1s infinite;
   height: 50px;
@@ -127,6 +128,9 @@
     font-size: 25px;
   }
 }
+
+
+
 
 
 

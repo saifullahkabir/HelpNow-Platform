@@ -24,7 +24,7 @@ const AddPost = () => {
         const description = form.description.value;
         // const postDate = new Date().toISOString();
         const postDate = new Date();
-console.log(postDate, 'postDate heheheheh');
+        
         const volunteerData = {
             postTitle,
             thumbnail,

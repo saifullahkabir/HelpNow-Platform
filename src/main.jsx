@@ -13,11 +13,11 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProviders>
-    <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
-    <ReactQueryDevtools initialIsOpen={false}></ReactQueryDevtools>
-    </QueryClientProvider>
-    <Toaster></Toaster>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false}></ReactQueryDevtools>
+      </QueryClientProvider>
+      <Toaster></Toaster>
     </AuthProviders>
   </StrictMode>,
 )
