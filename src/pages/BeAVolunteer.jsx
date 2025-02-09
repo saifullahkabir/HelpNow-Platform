@@ -1,10 +1,11 @@
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
+import useAxiosCommon from "../hooks/useAxiosCommon";
 
 
 const BeAVolunteer = ({ volunteerNeed }) => {
     const { user } = useAuth()
-
+    const axiosCommon = useAxiosCommon();
     const {
         _id,
         thumbnail,
@@ -50,7 +51,16 @@ const BeAVolunteer = ({ volunteerNeed }) => {
             suggestion,
             status
         }
-        console.log(volunteerData, 'volunteer data');
+        
+        try{
+            await axiosCommon.post(`/volunteerRequest`, volunteerData);
+            document.getElementById("my_modal_3").close();
+            toast.success("Successfully requested for volunteer!");
+        }
+        catch(err) {
+            document.getElementById("my_modal_3").close();
+            toast.error(err?.message);
+        }
     }
 
     return (
