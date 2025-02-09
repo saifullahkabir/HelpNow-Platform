@@ -67,14 +67,14 @@ const Register = () => {
                 <div className=" flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40">
                     <div className="w-full max-w-md">
                         {/* <img className="w-auto h-8 sm:h-9" src={logo} alt="logo" /> */}
-                        <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl font-lato">sign Up</h1>
+                        <h1 className="mt-3 text-2xl font-semibold capitalize sm:text-3xl font-lato">sign Up</h1>
 
                         <form
                             onSubmit={handleSignUp}
                             className='relative'>
                             <div className=" flex items-center mt-6 md:mt-8 ">
                                 <span className="absolute">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                         <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </span>
@@ -83,12 +83,12 @@ const Register = () => {
                                     name='name'
                                     placeholder='Name'
                                     required
-                                    className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    className="block w-full py-3 text-opacity-80  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
                             <div className="relative flex items-center mt-3 md:mt-4">
                                 <span className="absolute">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                         <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </span>
@@ -97,12 +97,12 @@ const Register = () => {
                                     name='email'
                                     placeholder='Email address'
                                     required
-                                    className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    className="block w-full py-3 text-opacity-80  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
                             <div className="relative flex items-center mt-3 md:mt-4">
                                 <span className="absolute">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                         <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                     </svg>
                                 </span>
@@ -111,12 +111,12 @@ const Register = () => {
                                     name='photo'
                                     placeholder='Photo URL'
                                     required
-                                    className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    className="block w-full py-3 text-opacity-80  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                             </div>
                             <div className=" relative flex items-center mt-3 md:mt-4">
                                 <span className="absolute">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                                         <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg>
                                 </span>
@@ -125,7 +125,7 @@ const Register = () => {
                                     placeholder='Password'
                                     name='password'
                                     required
-                                    className="block w-full py-3 text-gray-700  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                    className="block w-full py-3 text-opacity-80  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
                                 <span
                                     className="absolute right-5 text-lg md:text-xl "
@@ -149,7 +149,7 @@ const Register = () => {
                         </form>
 
                         <div className="">
-                            <p className="mt-4 text-center text-gray-600 dark:text-gray-400">or sign up with</p>
+                            <p className="mt-4 text-center opacity-75">or sign up with</p>
                             <div onClick={handleGoogleSignUp}>
                                 <a className="flex items-center justify-center px-6 py-3 mt-4  transition-colors duration-300 transform border rounded-lg hover:text-white hover:bg-gray-800">
                                     <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">

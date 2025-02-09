@@ -1,7 +1,8 @@
-import { Link, useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
 // for animation
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import BeAVolunteer from "./BeAVolunteer";
 
 AOS.init();
 
@@ -20,7 +21,7 @@ const VolunteerDetails = () => {
         postDate,
         organizer,
     } = volunteerNeed || {};
-    
+
     // for 05 FEB 2025 this format
     const options = { day: "2-digit", month: "short", year: "numeric" };
     const formattedDate = postDate ?
@@ -66,9 +67,27 @@ const VolunteerDetails = () => {
                     <p className="text-base lg:text-lg opacity-85 mt-3">Location: {location}</p>
 
                     <div className="card-actions justify-end  mt-6 mb-4 md:mb-0">
-                        <Link className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">
-                            <button className="   font-bold text-sm lg:text-base ">Be a Volunteer</button>
-                        </Link>
+                        {/* <Link className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">
+                            <button className="font-bold text-sm lg:text-base ">Be a Volunteer</button>                           
+                        </Link> */}
+                        {/* Modal */}
+                        <div>
+                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                            <div
+                                onClick={() => document.getElementById('my_modal_3').showModal()}
+                                className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">
+                                <button className="font-bold text-sm lg:text-base" >Be a Volunteer</button>
+                            </div>
+                            <dialog id="my_modal_3" className="modal">
+                                <div className="modal-box max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+                                    <form method="dialog">
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+                                    <BeAVolunteer volunteerNeed={volunteerNeed}></BeAVolunteer>
+                                </div>
+                            </dialog>
+                        </div>
                     </div>
                 </div>
             </div>

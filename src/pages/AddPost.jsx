@@ -70,7 +70,7 @@ console.log(postDate, 'postDate heheheheh');
                                 name='postTitle'
                                 type='text'
                                 required
-                                className='block w-full px-4 py-2 mt-2 opacity-90  border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring'
+                                className='block w-full px-4 py-2 mt-2 opacity-90  border border-gray-200 rounded-md  focus:border-gray-400 focus:ring-gray-300 focus:ring-opacity-40  focus:outline-none focus:ring '
                             />
                         </div>
                         <div>
