@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import MyVolunteerRequests from './MyVolunteerRequests';
 
 
 const ManageMyPosts = () => {
@@ -80,7 +81,8 @@ const ManageMyPosts = () => {
     }
 
     return (
-        <div className="pt-24 lg:pt-24 xl:pt-28 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
+        <div>
+            <div className="pt-24 lg:pt-24 xl:pt-28 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
             <div className="-mx-2 md:-mx-0 opacity-95">
                 <div className="flex items-center gap-x-3 mb-4">
                     <h2 className=" text-lg md:text-xl  font-semibold leading-tight">My Need Volunteers</h2>
@@ -153,9 +155,9 @@ const ManageMyPosts = () => {
                         :
                         <>
                             <div className='flex justify-center '>
-                                
-                                <DotLottieReact 
-                                className='rounded-full w-[700px] '
+
+                                <DotLottieReact
+                                    className='rounded-full w-[700px] '
                                     src="https://lottie.host/d1cb8cc5-979f-4f7c-8733-8c32f07f0e42/rWru8w7Q6z.lottie"
                                     loop
                                     autoplay
@@ -164,6 +166,11 @@ const ManageMyPosts = () => {
                         </>
                 }
             </div>
+        </div>
+        {/* My Volunteer request section */}
+        <div>
+            <MyVolunteerRequests></MyVolunteerRequests>
+        </div>
         </div>
     );
 };

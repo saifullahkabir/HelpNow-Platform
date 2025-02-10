@@ -60,6 +60,9 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
             document.getElementById("my_modal_3").close();
             toast.success("Successfully requested for volunteer!");
             // navigate('/my-post')
+            setTimeout(() => {
+                navigate("/my-post#volunteer-requests");
+            }, 500)
             
 
         }
