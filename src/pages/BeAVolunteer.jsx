@@ -62,6 +62,7 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
             // navigate('/my-post')
             setTimeout(() => {
                 navigate("/my-post#volunteer-requests");
+                window.location.hash = "volunteer-requests";
             }, 500)
             
 

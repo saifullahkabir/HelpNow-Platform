@@ -3,11 +3,13 @@ import { MdCancel } from "react-icons/md";
 import useAuth from "../hooks/useAuth";
 import useAxiosCommon from "../hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const MyVolunteerRequests = () => {
     const { user } = useAuth();
     const axiosCommon = useAxiosCommon();
+    const location = useLocation();
 
     const getData = async () => {
         const { data } = await axiosCommon(`/my-request/${user?.email}`);
@@ -24,6 +26,16 @@ const MyVolunteerRequests = () => {
     })
     console.log('My requests:', myRequests);
 
+    // for scrollIntoView
+    useEffect(() => {
+        if (location.hash === "#volunteer-requests") {
+            const element = document.getElementById("volunteer-requests");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, [location]);
+
     if (isLoading) {
         return <div className="flex justify-center mt-48 md:mt-60 xl:mt-72">
             <span className="loader2"></span>
@@ -31,7 +43,7 @@ const MyVolunteerRequests = () => {
     }
 
     return (
-        <div className=" pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
+        <div  id="volunteer-requests" className=" pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
             <div className="-mx-2 md:-mx-0 opacity-95">
                 <div className="flex items-center gap-x-3 mb-4">
                     <h2 className=" text-lg md:text-xl  font-semibold leading-tight">My Volunteer Request</h2>
