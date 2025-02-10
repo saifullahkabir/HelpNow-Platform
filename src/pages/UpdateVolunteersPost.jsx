@@ -31,7 +31,7 @@ const UpdateVolunteersPost = () => {
         const location = form.location.value;
         const category = form.category.value;
         const volunteersNeeded = parseFloat(form.volunteersNeeded.value);
-        const deadline = startDate.toUTCString();
+        const deadline = startDate;
         const description = form.description.value;
         
         const UpdateData = {

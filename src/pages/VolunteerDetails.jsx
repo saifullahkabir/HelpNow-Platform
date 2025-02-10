@@ -1,13 +1,16 @@
-import {  useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 // for animation
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import BeAVolunteer from "./BeAVolunteer";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 AOS.init();
 
 const VolunteerDetails = () => {
     const volunteerNeed = useLoaderData();
+    const [volunteersNeeded, setVolunteersNeeded] = useState(volunteerNeed?.volunteersNeeded || 0);
 
     const {
         _id,
@@ -15,7 +18,6 @@ const VolunteerDetails = () => {
         postTitle,
         description,
         category,
-        volunteersNeeded,
         location,
         deadline,
         postDate,
@@ -27,6 +29,13 @@ const VolunteerDetails = () => {
     const formattedDate = postDate ?
         new Date(postDate).toLocaleDateString("en-GB", options).toUpperCase()
         : "N/A";
+
+    const handleBeAVolunteer = () => {
+        if (volunteersNeeded === 0) {
+            return toast.error("No more volunteers needed for this post!")
+        }
+        document.getElementById('my_modal_3').showModal();
+    }
 
     return (
         <div data-aos="fade-down"
@@ -74,7 +83,7 @@ const VolunteerDetails = () => {
                         <div>
                             {/* You can open the modal using document.getElementById('ID').showModal() method */}
                             <div
-                                onClick={() => document.getElementById('my_modal_3').showModal()}
+                                onClick={handleBeAVolunteer}
                                 className="btn-sm lg:btn-md btn  bg-[#797DFC] hover:bg-[#888cfcc0] text-white ">
                                 <button className="font-bold text-sm lg:text-base" >Be a Volunteer</button>
                             </div>
@@ -84,7 +93,7 @@ const VolunteerDetails = () => {
                                         {/* if there is a button in form, it will close the modal */}
                                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </form>
-                                    <BeAVolunteer volunteerNeed={volunteerNeed}></BeAVolunteer>
+                                    <BeAVolunteer volunteerNeed={volunteerNeed} volunteersNeeded={volunteersNeeded} setVolunteersNeeded={setVolunteersNeeded}></BeAVolunteer>
                                 </div>
                             </dialog>
                         </div>

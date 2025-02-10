@@ -1,18 +1,19 @@
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import useAxiosCommon from "../hooks/useAxiosCommon";
+import { useNavigate } from "react-router-dom";
 
 
-const BeAVolunteer = ({ volunteerNeed }) => {
+const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) => {
     const { user } = useAuth()
     const axiosCommon = useAxiosCommon();
+    const navigate = useNavigate();
     const {
         _id,
         thumbnail,
         postTitle,
         description,
         category,
-        volunteersNeeded,
         location,
         deadline,
         organizer,
@@ -42,6 +43,7 @@ const BeAVolunteer = ({ volunteerNeed }) => {
             category, 
             volunteersNeeded,
             location,
+            deadline,
             organizer,
             volunteer: {
                 name,
@@ -54,8 +56,12 @@ const BeAVolunteer = ({ volunteerNeed }) => {
         
         try{
             await axiosCommon.post(`/volunteerRequest`, volunteerData);
+            setVolunteersNeeded(prev => prev - 1);
             document.getElementById("my_modal_3").close();
             toast.success("Successfully requested for volunteer!");
+            // navigate('/my-post')
+            
+
         }
         catch(err) {
             document.getElementById("my_modal_3").close();

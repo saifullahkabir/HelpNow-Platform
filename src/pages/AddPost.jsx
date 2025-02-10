@@ -20,7 +20,7 @@ const AddPost = () => {
         const location = form.location.value;
         const category = form.category.value;
         const volunteersNeeded = parseFloat(form.volunteersNeeded.value);
-        const deadline = startDate.toUTCString();
+        const deadline = startDate;
         const description = form.description.value;
         // const postDate = new Date().toISOString();
         const postDate = new Date();
