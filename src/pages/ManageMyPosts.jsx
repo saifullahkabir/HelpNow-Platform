@@ -119,7 +119,9 @@ const ManageMyPosts = () => {
                                                 key={volunteerNeed._id}
                                                 className="border-b border-opacity-20 hover:border-gray-300 hover:bg-gray-50 hover:bg-opacity-90 opacity-90 hover:opacity-85 font-normal hover:text-black">
                                                 <td className="px-4 py-3 whitespace-nowrap">
+                                                    <Link className='hover:link hover:font-semibold' to={`/volunteerNeed/${volunteerNeed._id}`}>
                                                     <p>{volunteerNeed.postTitle}</p>
+                                                    </Link>
                                                 </td>
                                                 <td className="px-4 py-3 whitespace-nowrap">
                                                     <p>{new Date(volunteerNeed.deadline).toLocaleDateString()}</p>
@@ -136,11 +138,15 @@ const ManageMyPosts = () => {
                                                     <p>{volunteerNeed.category}</p>
                                                 </td>
                                                 <td className="px-4 py-3 text-right whitespace-nowrap">
-                                                    <div className='flex items-center gap-3 md:gap-4 lg:gap-5  text-xl '>
-                                                        <Link to={`/update-post/${volunteerNeed._id}`}>
-                                                            <BiEdit className='focus:text-[#797DFC] hover:text-[#797DFC] ' />
+                                                    <div className='flex items-center gap-3 md:gap-4 lg:gap-5  '>
+                                                        <Link className=' btn btn-sm btn-circle text-xl lg:text-2xl hover:bg-[#888cf0] focus:bg-[#888cf0] border-none' to={`/update-post/${volunteerNeed._id}`}>
+                                                            <BiEdit className='lg:p-[2px]' />
                                                         </Link>
-                                                        <MdDeleteOutline onClick={() => handleDelete(volunteerNeed._id)} className='focus:text-red-600 hover:text-red-600' />
+                                                        <div 
+                                                        onClick={() => handleDelete(volunteerNeed._id)} 
+                                                        className='btn btn-sm btn-circle text-xl lg:text-2xl hover:bg-red-600 focus:bg-red-600 border-none'>
+                                                        <MdDeleteOutline className='lg:p-[2px] font-bold ' />
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
