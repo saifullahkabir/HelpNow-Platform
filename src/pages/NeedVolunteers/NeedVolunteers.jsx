@@ -4,9 +4,15 @@ import useAxiosCommon from "../../hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import CardLayout from "./CardLayout";
 import { LuLayoutGrid, LuTableOfContents } from "react-icons/lu";
+import { RiResetLeftLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const NeedVolunteers = () => {
     const axiosCommon = useAxiosCommon();
+    const [search, setSearch] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+
 
     const getData = async () => {
         const { data } = await axiosCommon(`/volunteerNeeds`);
@@ -22,9 +28,30 @@ const NeedVolunteers = () => {
         queryKey: ['volunteerNeeds']
     })
 
-    const handleSearch = () => {
+    useEffect(() => {
+        const getSearchData = async () => {
+            if (!search.trim()) {
+                setSearchResult([]); // Reset search result if empty
+                return;
+            }
 
+            try {
+                const { data } = await axiosCommon(`/searchPosts?search=${search}`);
+                setSearchResult(data);
+            }
+            catch (err) {
+                toast.error("Search failed:", err)
+            }
+        }
+        getSearchData();
+    }, [search, axiosCommon])
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        setSearch(search);
     }
+
+    
 
 
     if (isLoading) {
@@ -34,37 +61,45 @@ const NeedVolunteers = () => {
     }
     return (
         <div className="pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24">
-            <div className="flex  justify-center ">
+            <div className="flex  justify-center items-center gap-3 md:gap-4">
                 <form
                     onSubmit={handleSearch}
-                    className="min-w-[275px] md:min-w-[320px] text-sm md:text-base">
+                    className="min-w-[250px] md:min-w-[320px] text-sm md:text-base">
                     <div className=' flex p-1 overflow-hidden border rounded-lg  focus-within:ring focus-within:ring-opacity-40 focus-within:border-gray-400 focus-within:ring-gray-300 '>
                         <div className="flex items-center text-xl px-1 md:px-2">
                             <CiSearch className="font-bold" />
                         </div>
                         <input
-                            className='px-2 md:px-3 py-2 text-gray-700 placeholder-gray-500  outline-none focus:placeholder-transparent'
+                            className='px-1 md:px-3 py-2 text-gray-700 placeholder-gray-500  outline-none focus:placeholder-transparent'
                             type='text'
                             name='search'
-
-                            placeholder='Enter Post Title'
-                            aria-label='Enter Post Title'
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            placeholder='Search by Post Title...'
+                            aria-label='Search by Post Title...'
                         />
 
-                        <button className='px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm  tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-[#797DFC] rounded-md hover:bg-[#888cfcc0] focus:bg-[#888cfcc0] focus:outline-none font-semibold'>
+                        <button
+                            type="submit"
+                            className='px-2 py-1 md:px-4 md:py-2 text-xs md:text-sm  tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-[#797DFC] rounded-md hover:bg-[#888cfcc0] focus:bg-[#888cfcc0] focus:outline-none font-semibold'>
                             Search
                         </button>
                     </div>
                 </form>
+                <div>
+                    <button className="btn btn-sm md:btn-md">
+                        <RiResetLeftLine className="text-sm md:text-lg " />
+                    </button>
+                </div>
             </div>
             <div className="flex justify-end pt-5 md:pt-7 lg:pt-9 xl:pt-11">
                 <label htmlFor="Toggle3" className="inline-flex items-center  cursor-pointer  shadow-xl rounded-lg">
                     <input id="Toggle3" type="checkbox" className="hidden peer" />
-                    <span className="px-4 py-2  rounded-l-lg  bg-[#797DFC] peer-checked:bg-gray-100">
+                    <span className="px-3 md:px-4 py-2  rounded-l-lg  bg-[#797DFC] peer-checked:bg-gray-100">
                         <LuLayoutGrid className="text-base md:text-xl  text-black " />
                     </span>
-                    <span className="px-4 py-2  rounded-r-lg bg-gray-100  peer-checked:bg-[#797DFC]">
-                    <LuTableOfContents className="text-base md:text-xl  text-black" />
+                    <span className="px-3 md:px-4 py-2  rounded-r-lg bg-gray-100  peer-checked:bg-[#797DFC]">
+                        <LuTableOfContents className="text-base md:text-xl  text-black" />
                     </span>
                 </label>
             </div>
@@ -73,7 +108,7 @@ const NeedVolunteers = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8 xl:gap-8 2xl:gap-12  ">
                     {
-                        volunteerNeeds
+                        (search ? searchResult : volunteerNeeds)
                             .map(volunteerNeed => <CardLayout
                                 key={volunteerNeed._id}
                                 volunteerNeed={volunteerNeed}
