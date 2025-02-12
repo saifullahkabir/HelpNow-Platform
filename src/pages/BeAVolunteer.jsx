@@ -40,7 +40,7 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
             postTitle,
             thumbnail,
             description,
-            category, 
+            category,
             volunteersNeeded,
             location,
             deadline,
@@ -53,8 +53,8 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
             suggestion,
             status
         }
-        
-        try{
+
+        try {
             await axiosCommon.post(`/volunteerRequest`, volunteerData);
             setVolunteersNeeded(prev => prev - 1);
             document.getElementById("my_modal_3").close();
@@ -64,10 +64,10 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
                 navigate("/my-post#volunteer-requests");
                 window.location.hash = "volunteer-requests";
             }, 500)
-            
+
 
         }
-        catch(err) {
+        catch (err) {
             document.getElementById("my_modal_3").close();
             toast.error(err?.message);
         }

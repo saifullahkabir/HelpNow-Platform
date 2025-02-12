@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
-const VolunteerCard = ({ volunteerNeed }) => {
+
+const CardLayout = ({ volunteerNeed }) => {
 
     const {
         _id,
@@ -15,13 +15,13 @@ const VolunteerCard = ({ volunteerNeed }) => {
         postDate,
         organizer,
     } = volunteerNeed;
-    
+
     // for 05 FEB 2025 this format
     const options = { day: "2-digit", month: "short", year: "numeric" };
     const formattedDate = postDate ?
         new Date(postDate).toLocaleDateString("en-GB", options).toUpperCase()
         : "N/A";
-    
+
     return (
         <div>
             <Fade>
@@ -67,4 +67,4 @@ const VolunteerCard = ({ volunteerNeed }) => {
     );
 };
 
-export default VolunteerCard;
+export default CardLayout;

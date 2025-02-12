@@ -38,49 +38,9 @@ const MyVolunteerRequests = () => {
         }
     }, [location]);
 
-    // delete my volunteer request
-    // const handleRequestDelete = async id => {
-    //     const result = Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!"
-    //     });
-    //     if (result?.isConfirmed) {
-    //         try {
-    //             const response = await axiosCommon.delete(`/volunteerRequest/${id}`);
-    //             console.log(response, 'response');
-
-    //             if (response.data.deleteCount > 0) {
-    //                 // UI update
-    //                 refetch();
-    //                 // Success Message
-    //                 await Swal.fire({
-    //                     title: "Deleted!",
-    //                     text: "Your post has been deleted.",
-    //                     icon: "success",
-    //                     confirmButtonColor: "#29B170"
-    //                 });
-    //             }
-    //         }
-    //         catch (err) {
-    //             console.log('Delete failed:', err);
-    //             Swal.fire({
-    //                 title: "Error!",
-    //                 text: "Something went wrong. Please try again.",
-    //                 icon: "error",
-    //                 confirmButtonColor: "#d33"
-    //             });
-    //         }
-
-    //     }
-
-    // }
-
+   
     const handleRequestDelete = async id => {
+     
         // Confirmation Popup
         const result =await Swal.fire({
             title: "Are you sure?",
@@ -96,7 +56,7 @@ const MyVolunteerRequests = () => {
         if (result?.isConfirmed) {
             try {
                 const response = await axiosCommon.delete(`/volunteerRequest/${id}`);
-                
+                console.log(response, 'response');
                 if (response.data.deletedCount > 0) {
                     // ui update
                     refetch();
@@ -171,7 +131,7 @@ const MyVolunteerRequests = () => {
                                                         volunteerId}`}>
                                                         <div className="flex items-center ">
                                                             <div className="flex items-center gap-2 lg:gap-3">
-                                                                <img className="object-cover h-8 lg:h-9 rounded-full" src={myRequest?.organizer?.photo} alt="User photo" />
+                                                                <img className="object-cover h-8 lg:h-9 rounded-full" src={myRequest?.organizer?.photo} alt="User photo" referrerPolicy='no-referrer'/>
 
                                                                 <div className="flex flex-col ">
                                                                     <p className=" font-semibold opacity-95 text-sm lg:text-base hover:link hover:font-semibold" tabIndex={0} role="link">{myRequest?.organizer?.name}</p>

@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddPost from "../pages/AddPost";
 import ManageMyPosts from "../pages/ManageMyPosts";
 import UpdateVolunteersPost from "../pages/UpdateVolunteersPost";
+import NeedVolunteers from "../pages/NeedVolunteers/NeedVolunteers";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
+      },
+      {
+        path: '/volunteers',
+        element: <NeedVolunteers></NeedVolunteers>
       },
       {
         path: '/login',
