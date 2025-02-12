@@ -51,7 +51,10 @@ const NeedVolunteers = () => {
         setSearch(search);
     }
 
-    
+    const handleReset = () => {
+        setSearch('');
+        setSearchResult([]);
+    }
 
 
     if (isLoading) {
@@ -87,7 +90,7 @@ const NeedVolunteers = () => {
                     </div>
                 </form>
                 <div>
-                    <button className="btn btn-sm md:btn-md">
+                    <button onClick={handleReset} className="btn btn-sm md:btn-md">
                         <RiResetLeftLine className="text-sm md:text-lg " />
                     </button>
                 </div>
