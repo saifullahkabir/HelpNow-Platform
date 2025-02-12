@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import CardLayout from "./CardLayout";
+import { LuLayoutGrid, LuTableOfContents } from "react-icons/lu";
 
 const NeedVolunteers = () => {
     const axiosCommon = useAxiosCommon();
@@ -33,7 +34,7 @@ const NeedVolunteers = () => {
     }
     return (
         <div className="pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24">
-            <div className="flex justify-center">
+            <div className="flex  justify-center ">
                 <form
                     onSubmit={handleSearch}
                     className="min-w-[275px] md:min-w-[320px] text-sm md:text-base">
@@ -56,18 +57,29 @@ const NeedVolunteers = () => {
                     </div>
                 </form>
             </div>
-
-            <div className="pt-8 md:pt-10 lg:pt-12 xl:pt-14">
-                
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8 xl:gap-8 2xl:gap-12  ">
-                {
-                    volunteerNeeds
-                    .map(volunteerNeed => <CardLayout
-                    key={volunteerNeed._id}
-                    volunteerNeed={volunteerNeed}
-                    ></CardLayout> )
-                }
+            <div className="flex justify-end pt-5 md:pt-7 lg:pt-9 xl:pt-11">
+                <label htmlFor="Toggle3" className="inline-flex items-center  cursor-pointer  shadow-xl rounded-lg">
+                    <input id="Toggle3" type="checkbox" className="hidden peer" />
+                    <span className="px-4 py-2  rounded-l-lg  bg-[#797DFC] peer-checked:bg-gray-100">
+                        <LuLayoutGrid className="text-base md:text-xl  text-black " />
+                    </span>
+                    <span className="px-4 py-2  rounded-r-lg bg-gray-100  peer-checked:bg-[#797DFC]">
+                    <LuTableOfContents className="text-base md:text-xl  text-black" />
+                    </span>
+                </label>
             </div>
+
+            <div className="pt-3 md:pt-5 lg:pt-6 xl:pt-8">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8 xl:gap-8 2xl:gap-12  ">
+                    {
+                        volunteerNeeds
+                            .map(volunteerNeed => <CardLayout
+                                key={volunteerNeed._id}
+                                volunteerNeed={volunteerNeed}
+                            ></CardLayout>)
+                    }
+                </div>
             </div>
         </div>
     );
