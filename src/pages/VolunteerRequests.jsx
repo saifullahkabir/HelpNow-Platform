@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import { MdCancel } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import { BsCheckAll } from "react-icons/bs";
+import { PiUserCheckBold, PiUserCheckFill, PiUserCircleCheckFill } from "react-icons/pi";
 
 const VolunteerRequests = () => {
     const axiosCommon = useAxiosCommon();
@@ -19,16 +24,83 @@ const VolunteerRequests = () => {
     const {
         data: requests = [],
         isLoading,
-
+        refetch
     } = useQuery({
         queryFn: getData,
         queryKey: ['requests', user?.email]
     })
     console.log(requests, 'data');
 
+    // cancel volunteer request
+    const handleRequestDelete = async id => {
+
+        // Confirmation Popup
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#29B170",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        });
+
+        // if the user confirms, it will be deleted
+        if (result?.isConfirmed) {
+            try {
+                const response = await axiosCommon.delete(`/volunteerRequest/${id}`);
+                console.log(response, 'response');
+                if (response.data.deletedCount > 0) {
+                    // ui update
+                    refetch();
+                    // Success Message
+                    await Swal.fire({
+                        title: "Cancelled!",
+                        text: "Volunteer request has been Cancelled.",
+                        icon: "success",
+                        confirmButtonColor: "#29B170"
+                    });
+                }
+            }
+
+            catch (err) {
+                console.log('Delete failed:', err);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong. Please try again.",
+                    icon: "error",
+                    confirmButtonColor: "#d33"
+                });
+            }
+        }
+
+    }
+
+    // handle Accepted 
+    const handleAccept = async (id) => {
+        try {
+            await axiosCommon.patch(`/volunteer-requests/${id}`, { status: 'Accepted' });
+            toast.success('Request Accepted!');
+            refetch();
+        }
+        catch (err) {
+            toast.error(err.code);
+        }
+    }
+
+
+    if (isLoading) {
+        return <div className="flex justify-center mt-48 md:mt-60 xl:mt-72">
+            <span className="loader2"></span>
+        </div>
+    }
+
 
     return (
         <div>
+            <Helmet>
+                <title>Volunteer Requests - HelpNow</title>
+            </Helmet>
             <div className=" pt-24 lg:pt-24 xl:pt-28 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24 ">
                 <div className="-mx-2 md:-mx-0 opacity-95">
                     <div className="flex items-center gap-x-3 mb-4">
@@ -100,24 +172,44 @@ const VolunteerRequests = () => {
                                                     </td>
                                                     <td className="px-4 py-3 whitespace-nowrap">
                                                         <div
-                                                            className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-red-100/60 text-red-500 `}>
+                                                            className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2  ${request.status === 'Requested' && 'bg-red-100/60 text-red-500'}
+                                                            ${request.status === 'Accepted' && 'bg-green-100/60 text-green-500'}
+                                                           
+                                                            `}>
                                                             <span
-                                                                className={`h-1 lg:h-1.5 w-1 lg:w-1.5 rounded-full bg-red-500 `}
+                                                                className={`h-1 lg:h-1.5 w-1 lg:w-1.5 rounded-full ${request.status === 'Requested' && 'bg-red-500'} 
+                                                                ${request.status === 'Accepted' && 'bg-green-500'}
+                                                                `}
                                                             ></span>
                                                             <h2 className='text-xs lg:text-sm font-normal '>{request.status}</h2>
                                                         </div>
                                                     </td>
                                                     <td className="px-4 py-3 whitespace-nowrap">
-                                                        <div className="flex items-center gap-4">
+                                                        <div className="flex justify-center items-center gap-4">
                                                             <button
-                                                                className=" btn btn-sm btn-circle  text-red-600">
-                                                                <MdCancel  className="text-xl lg:text-2xl"/>
+                                                                onClick={() => handleRequestDelete(request._id)}
+                                                                disabled={request.status === 'Accepted'}
+                                                                className="disabled:hidden btn btn-sm btn-circle  text-red-600">
+                                                                <MdCancel className="text-xl lg:text-2xl" />
                                                             </button>
-                                                            <button
-                                                                className=" btn btn-sm btn-circle  text-green-600"
-                                                            >
-                                                                <IoIosCheckmarkCircle className="text-xl lg:text-2xl" />
-                                                            </button>
+                                                            {/* Accept Button */}
+                                                            {
+                                                                request.status === 'Accepted' ?
+                                                                    (
+                                                                        <button className="btn btn-sm btn-circle  text-green-600 " >
+                                                                            <PiUserCircleCheckFill className="text-xl lg:text-2xl" />
+                                                                        </button>
+                                                                    )
+                                                                    :
+                                                                    (
+                                                                        <button
+                                                                            onClick={() => handleAccept(request._id)}
+                                                                            className=" btn btn-sm btn-circle  text-green-600 "
+                                                                        >
+                                                                            <IoIosCheckmarkCircle className="text-xl lg:text-2xl" />
+                                                                        </button>
+                                                                    )
+                                                            }
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -137,7 +229,7 @@ const VolunteerRequests = () => {
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
