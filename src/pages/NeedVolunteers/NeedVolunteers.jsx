@@ -58,6 +58,20 @@ const NeedVolunteers = () => {
         setSearchResult([]);
     }
 
+    // Load layout from Local Storage on first render
+    useEffect(() => {
+        const saveLayout = localStorage.getItem('layout');
+        if(saveLayout === 'table'){
+            setTableView(true);
+        }
+    }, [])
+
+    // Function to toggle layout and store it in Local Storage
+    const toggleLayout = () => {
+        const newLayout = !tableView;
+        setTableView(newLayout);
+        localStorage.setItem("layout", newLayout ? 'table' : 'grid');
+    }
 
     if (isLoading) {
         return <div className="flex justify-center mt-48 md:mt-60 xl:mt-72">
@@ -108,7 +122,7 @@ const NeedVolunteers = () => {
                         id="Toggle3"
                         type="checkbox"
                         className="hidden peer"
-                        onChange={() => setTableView(!tableView)}
+                        onChange={toggleLayout}
                         checked={tableView}
                     />
                     <span className="px-3 md:px-4 py-2  rounded-l-lg  bg-[#797DFC] peer-checked:bg-gray-100">
@@ -122,7 +136,7 @@ const NeedVolunteers = () => {
 
             <div className="pt-3 md:pt-5 lg:pt-6 xl:pt-8">
                 {
-                     
+
                     tableView ?
                         <TableLayout dataToShow={dataToShow}></TableLayout>
                         :
@@ -139,10 +153,10 @@ const NeedVolunteers = () => {
                             )
                             :
                             (
-                               
-                                    <div>
-                                        <p className="text-center py-4 text-lg text-gray-500">No Data Found</p>
-                                    </div>
+
+                                <div>
+                                    <p className="text-center py-4 text-lg text-gray-500">No Data Found</p>
+                                </div>
                             )
                 }
 
