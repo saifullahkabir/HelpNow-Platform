@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const TableLayout = ({ dataToShow }) => {
     return (
         <div className="overflow-x-auto rounded-lg shadow-sm ">
@@ -30,12 +32,16 @@ const TableLayout = ({ dataToShow }) => {
                                     key={dataShow._id}
                                     className="border-b border-opacity-20 hover:border-gray-300 hover:bg-gray-50 hover:bg-opacity-90 opacity-90 hover:opacity-85 font-normal hover:text-black text-xs lg:text-sm">
                                     <td className="px-4 py-3 ">
-                                        <div>
-                                            <img className="w-24 md:w-28 lg:w-32 xl:w-40 h-full rounded-lg" src={dataShow.thumbnail} alt="thumbnail" />
-                                        </div>
+                                        <Link to={`/volunteerNeed/${dataShow._id}`}>
+                                            <div>
+                                                <img className="w-24 md:w-28 lg:w-32 xl:w-40 h-full rounded-lg" src={dataShow.thumbnail} alt="thumbnail" />
+                                            </div>
+                                        </Link>
                                     </td>
                                     <td className="px-4 py-3 whitespace-nowrap">
-                                        <p>{dataShow.postTitle}</p>
+                                        <Link to={`/volunteerNeed/${dataShow._id}`}>
+                                            <p>{dataShow.postTitle}</p>
+                                        </Link>
                                     </td>
                                     <td className="px-4 py-3 whitespace-nowrap">
                                         <p>{new Date(dataShow.deadline).toLocaleDateString()}</p>
@@ -46,22 +52,26 @@ const TableLayout = ({ dataToShow }) => {
 
                                     </td>
                                     <td className="px-4 py-3 whitespace-nowrap">
-                                    <div className="flex items-center ">
-                                            <div className="flex items-center gap-2 lg:gap-3">
-                                                <img className="object-cover h-8 lg:h-9 rounded-full" src={dataShow?.organizer?.photo} alt="User photo" referrerPolicy='no-referrer' />
+                                        <Link to={`/volunteerNeed/${dataShow._id}`}>
+                                            <div className="flex items-center ">
+                                                <div className="flex items-center gap-2 lg:gap-3">
+                                                    <img className="object-cover h-8 lg:h-9 rounded-full" src={dataShow?.organizer?.photo} alt="User photo" referrerPolicy='no-referrer' />
 
-                                                <div className="flex flex-col ">
-                                                    <p className=" font-semibold opacity-95 text-sm lg:text-base hover:link hover:font-semibold" tabIndex={0} role="link">{dataShow?.organizer?.name}</p>
-                                                    <span className=" text-xs lg:text-sm opacity-80 font-lato">{dataShow?.organizer?.email}</span>
+                                                    <div className="flex flex-col ">
+                                                        <p className=" font-semibold opacity-95 text-sm lg:text-base hover:link hover:font-semibold" tabIndex={0} role="link">{dataShow?.organizer?.name}</p>
+                                                        <span className=" text-xs lg:text-sm opacity-80 font-lato">{dataShow?.organizer?.email}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                        </div>
+                                            </div>
+                                        </Link>
                                     </td>
                                     <td className="px-4 py-3 whitespace-nowrap pl-10 xl:pl-0">
-                                    <div className="hover:text-[#797DFC] hover:underline hover:cursor-pointer   ">
-                                        View details
-                                    </div>
+                                        <Link to={`/volunteerNeed/${dataShow._id}`}>
+                                            <div className="hover:text-[#797DFC] hover:underline hover:cursor-pointer   ">
+                                                View details
+                                            </div>
+                                        </Link>
                                     </td>
                                 </tr>
                             )
