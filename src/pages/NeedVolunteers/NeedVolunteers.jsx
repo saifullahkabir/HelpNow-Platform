@@ -7,11 +7,13 @@ import { LuLayoutGrid, LuTableOfContents } from "react-icons/lu";
 import { RiResetLeftLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import TableLayout from "./TableLayout";
 
 const NeedVolunteers = () => {
     const axiosCommon = useAxiosCommon();
     const [search, setSearch] = useState('');
     const [searchResult, setSearchResult] = useState([]);
+    const [tableView, setTableView] = useState(false);
 
 
     const getData = async () => {
@@ -62,6 +64,9 @@ const NeedVolunteers = () => {
             <span className="loader2"></span>
         </div>
     }
+
+    const dataToShow = search ? searchResult : volunteerNeeds;
+
     return (
         <div className="pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24">
             <div className="flex  justify-center items-center gap-3 md:gap-4">
@@ -89,15 +94,23 @@ const NeedVolunteers = () => {
                         </button>
                     </div>
                 </form>
+                {/* Reset Button */}
                 <div>
                     <button onClick={handleReset} className="btn btn-sm md:btn-md">
                         <RiResetLeftLine className="text-sm md:text-lg " />
                     </button>
                 </div>
             </div>
+            {/* Layout Button */}
             <div className="flex justify-end pt-5 md:pt-7 lg:pt-9 xl:pt-11">
                 <label htmlFor="Toggle3" className="inline-flex items-center  cursor-pointer  shadow-xl rounded-lg">
-                    <input id="Toggle3" type="checkbox" className="hidden peer" />
+                    <input
+                        id="Toggle3"
+                        type="checkbox"
+                        className="hidden peer"
+                        onChange={() => setTableView(!tableView)}
+                        checked={tableView}
+                    />
                     <span className="px-3 md:px-4 py-2  rounded-l-lg  bg-[#797DFC] peer-checked:bg-gray-100">
                         <LuLayoutGrid className="text-base md:text-xl  text-black " />
                     </span>
@@ -108,16 +121,31 @@ const NeedVolunteers = () => {
             </div>
 
             <div className="pt-3 md:pt-5 lg:pt-6 xl:pt-8">
+                {
+                     
+                    tableView ?
+                        <TableLayout dataToShow={dataToShow}></TableLayout>
+                        :
+                        dataToShow.length > 0 ?
+                            (
+                                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8 xl:gap-8 2xl:gap-12  ">
+                                    {
+                                        dataToShow.map(volunteerNeed => <CardLayout
+                                            key={volunteerNeed._id}
+                                            volunteerNeed={volunteerNeed}
+                                        ></CardLayout>)
+                                    }
+                                </div>
+                            )
+                            :
+                            (
+                               
+                                    <div>
+                                        <p className="text-center py-4 text-lg text-gray-500">No Data Found</p>
+                                    </div>
+                            )
+                }
 
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-8 xl:gap-8 2xl:gap-12  ">
-                    {
-                        (search ? searchResult : volunteerNeeds)
-                            .map(volunteerNeed => <CardLayout
-                                key={volunteerNeed._id}
-                                volunteerNeed={volunteerNeed}
-                            ></CardLayout>)
-                    }
-                </div>
             </div>
         </div>
     );
