@@ -5,6 +5,7 @@ import 'aos/dist/aos.css';
 import BeAVolunteer from "./BeAVolunteer";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 AOS.init();
 
@@ -41,11 +42,14 @@ const VolunteerDetails = () => {
         <div data-aos="fade-down"
             data-aos-easing="linear"
             data-aos-duration="500" className="pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24">
+            <Helmet>
+                <title>Volunteer Details - HelpNow</title>
+            </Helmet>
             <div className="mb-4 lg:mb-6">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center ">
                         <div className="flex items-center gap-2 lg:gap-4">
-                            <img className="object-cover h-8 lg:h-10 rounded-full" src={organizer?.photo} alt="User photo" referrerPolicy='no-referrer'/>
+                            <img className="object-cover h-8 lg:h-10 rounded-full" src={organizer?.photo} alt="User photo" referrerPolicy='no-referrer' />
 
                             <div className="flex flex-col ">
                                 <a href="#" className=" font-semibold  opacity-95 text-sm lg:text-base" tabIndex={0} role="link">{organizer?.name}</a>
@@ -55,7 +59,7 @@ const VolunteerDetails = () => {
 
                     </div>
                     <div className="px-3 py-2  bg-[#a8abff4b] border-none text-[#797DFC] font-medium rounded-3xl">
-                        <p className="text-[8px] md:text-xs ">Volunteers needed: {volunteersNeeded}</p>
+                        <p className="text-[10px] md:text-xs lg:text-sm ">Volunteers needed: {volunteersNeeded}</p>
                     </div>
                 </div>
             </div>

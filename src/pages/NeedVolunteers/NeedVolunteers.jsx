@@ -8,6 +8,7 @@ import { RiResetLeftLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import TableLayout from "./TableLayout";
+import { Helmet } from "react-helmet-async";
 
 const NeedVolunteers = () => {
     const axiosCommon = useAxiosCommon();
@@ -61,7 +62,7 @@ const NeedVolunteers = () => {
     // Load layout from Local Storage on first render
     useEffect(() => {
         const saveLayout = localStorage.getItem('layout');
-        if(saveLayout === 'table'){
+        if (saveLayout === 'table') {
             setTableView(true);
         }
     }, [])
@@ -83,6 +84,9 @@ const NeedVolunteers = () => {
 
     return (
         <div className="pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24">
+            <Helmet>
+                <title>Need Volunteers - HelpNow</title>
+            </Helmet>
             <div className="flex  justify-center items-center gap-3 md:gap-4">
                 <form
                     onSubmit={handleSearch}
@@ -92,7 +96,7 @@ const NeedVolunteers = () => {
                             <CiSearch className="font-bold" />
                         </div>
                         <input
-                            className='px-1 md:px-3 py-2 text-gray-700 placeholder-gray-500  outline-none focus:placeholder-transparent'
+                            className='px-1 md:px-3 py-2   outline-none focus:placeholder-transparent'
                             type='text'
                             name='search'
                             value={search}
@@ -134,7 +138,7 @@ const NeedVolunteers = () => {
                 </label>
             </div>
 
-            <div className="pt-3 md:pt-5 lg:pt-6 xl:pt-8">
+            <div className="pt-4 md:pt-5 lg:pt-6 xl:pt-8">
                 {
 
                     tableView ?

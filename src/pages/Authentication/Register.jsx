@@ -5,6 +5,7 @@ import { VscEye } from "react-icons/vsc";
 import { VscEyeClosed } from "react-icons/vsc";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, signInWithGoogle, updateUserProfile, setUser } = useAuth();
@@ -43,7 +44,7 @@ const Register = () => {
         else if (!/[a-z]/.test(password)) {
             return setRegisterError('password should have at least one lower case character')
         }
-        
+
         setRegisterError('');
 
         try {
@@ -63,6 +64,9 @@ const Register = () => {
     }
     return (
         <div className="pb-14 md:pb-20 xl:pb-24  ">
+            <Helmet>
+                <title>Register - HelpNow</title>
+            </Helmet>
             <section className="font-lato ">
                 <div className=" flex items-center justify-center mt-28 md:mt-32 lg:mt-36 xl:mt-40">
                     <div className="w-full max-w-md">

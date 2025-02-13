@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Contact from "../components/Contact";
 import Faq from "../components/Faq";
 import Carousel from "../components/swiper/Carousel";
@@ -14,6 +15,9 @@ const Home = () => {
     
     return (
         <div>
+            <Helmet>
+                <title>Home - HelpNow</title>
+            </Helmet>
             <Carousel></Carousel>
             <VolunteerNeeds></VolunteerNeeds>
             <Contact></Contact>

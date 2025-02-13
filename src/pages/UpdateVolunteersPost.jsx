@@ -4,6 +4,7 @@ import { useState } from "react";
 import useAxiosCommon from "../hooks/useAxiosCommon";
 import DatePicker from "react-datepicker";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const UpdateVolunteersPost = () => {
     const volunteerNeed = useLoaderData();
@@ -21,7 +22,7 @@ const UpdateVolunteersPost = () => {
         deadline,
     } = volunteerNeed || {};
     const [startDate, setStartDate] = useState(deadline ? new Date(deadline) : new Date());
-    
+
 
     const handleUpdateVolunteer = async e => {
         e.preventDefault();
@@ -33,7 +34,7 @@ const UpdateVolunteersPost = () => {
         const volunteersNeeded = parseFloat(form.volunteersNeeded.value);
         const deadline = startDate;
         const description = form.description.value;
-        
+
         const UpdateData = {
             postTitle,
             thumbnail,
@@ -63,6 +64,9 @@ const UpdateVolunteersPost = () => {
 
     return (
         <div className='flex justify-center items-center  pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24 animate__animated animate__zoomIn'>
+            <Helmet>
+                <title>Update Post - HelpNow</title>
+            </Helmet>
             <section className='mx-0 md:mx-[5%] lg:mx-[10%] xl:mx-[20%] 2xl:mx-[25%] w-full p-4 md:p-6 rounded-md shadow-md '>
                 <h2 className='text-lg font-semibold opacity-95 capitalize text-center font-inter'>
                     Update Volunteer Post

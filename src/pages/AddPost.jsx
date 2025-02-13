@@ -5,6 +5,7 @@ import { useState } from "react";
 import useAxiosCommon from "../hooks/useAxiosCommon";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddPost = () => {
     const { user } = useAuth();
@@ -24,7 +25,7 @@ const AddPost = () => {
         const description = form.description.value;
         // const postDate = new Date().toISOString();
         const postDate = new Date();
-        
+
         const volunteerData = {
             postTitle,
             thumbnail,
@@ -54,6 +55,9 @@ const AddPost = () => {
     }
     return (
         <div className='flex justify-center items-center  pt-24 md:pt-28 lg:pt-32 xl:pt-36 pb-16 md:pb-20 xl:pb-24 2xl:pb-28 xl:px-20 2xl:px-24 animate__animated animate__zoomIn'>
+            <Helmet>
+                <title>Add Post - HelpNow</title>
+            </Helmet>
             <section className='mx-0 md:mx-[5%] lg:mx-[10%] xl:mx-[20%] 2xl:mx-[25%] w-full p-4 md:p-6  rounded-md shadow-md '>
                 <h2 className='text-lg font-semibold opacity-95 capitalize text-center font-inter'>
                     Add Volunteer Post

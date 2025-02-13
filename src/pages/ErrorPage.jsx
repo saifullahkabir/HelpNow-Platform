@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import error from '../assets/error.jpg'
+import { Helmet } from 'react-helmet-async';
 const ErrorPage = () => {
     const navigate = useNavigate();
     const handleGoBack = () => {
@@ -7,6 +8,9 @@ const ErrorPage = () => {
     }
     return (
         <div className=' py-16 md:py-20 xl:py-28 font-inter'>
+            <Helmet>
+                <title>404 Error - HelpNow</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <img className='w-[350px] md:w-[450px] lg:w-[500px]' src={error} alt="" /></div>
             <div className='flex justify-center mt-6 md:mt-8 xl:mt-12 gap-6 md:gap-6 xl:gap-10'>
