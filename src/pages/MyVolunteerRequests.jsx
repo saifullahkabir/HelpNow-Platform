@@ -155,7 +155,7 @@ const MyVolunteerRequests = () => {
 
                                                 </td>
                                                 <td className="px-4 py-3 whitespace-nowrap ">
-                                                    <p>{myRequest.category}</p>
+                                                    <p className="text-[#797DFC] uppercase">{myRequest.category}</p>
 
                                                 </td>
                                                 <td className="px-4 py-3 whitespace-nowrap">

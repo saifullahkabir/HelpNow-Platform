@@ -139,7 +139,7 @@ const ManageMyPosts = () => {
 
                                                     </td>
                                                     <td className="px-4 py-3 whitespace-nowrap">
-                                                        <p>{volunteerNeed.category}</p>
+                                                        <p className='text-[#797DFC] uppercase'>{volunteerNeed.category}</p>
                                                     </td>
                                                     <td className="px-4 py-3 text-right whitespace-nowrap">
                                                         <div className='flex items-center gap-3 md:gap-4 lg:gap-5  '>
