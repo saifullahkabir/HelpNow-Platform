@@ -187,6 +187,7 @@ const VolunteerRequests = () => {
                                                     <td className="px-4 py-3 whitespace-nowrap">
                                                         <div className="flex justify-center items-center gap-4">
                                                             <button
+                                                                title="cancel!"
                                                                 onClick={() => handleRequestDelete(request._id)}
                                                                 disabled={request.status === 'Accepted'}
                                                                 className="disabled:hidden btn btn-sm btn-circle  text-red-600">
@@ -196,13 +197,16 @@ const VolunteerRequests = () => {
                                                             {
                                                                 request.status === 'Accepted' ?
                                                                     (
-                                                                        <button className="btn btn-sm btn-circle  text-green-600 " >
+                                                                        <button
+                                                                            title="Accepted!"
+                                                                            className="btn btn-sm btn-circle  text-green-600 " >
                                                                             <PiUserCircleCheckFill className="text-xl lg:text-2xl" />
                                                                         </button>
                                                                     )
                                                                     :
                                                                     (
                                                                         <button
+                                                                            title="Accept!"
                                                                             onClick={() => handleAccept(request._id)}
                                                                             className=" btn btn-sm btn-circle  text-green-600 "
                                                                         >

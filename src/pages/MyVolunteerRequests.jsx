@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import { PiUserCircleCheckFill } from "react-icons/pi";
 
 
 const MyVolunteerRequests = () => {
@@ -38,11 +39,11 @@ const MyVolunteerRequests = () => {
         }
     }, [location]);
 
-   
+
     const handleRequestDelete = async id => {
-     
+
         // Confirmation Popup
-        const result =await Swal.fire({
+        const result = await Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
             icon: "question",
@@ -80,7 +81,7 @@ const MyVolunteerRequests = () => {
                 });
             }
         }
-        
+
     }
 
     if (isLoading) {
@@ -131,7 +132,7 @@ const MyVolunteerRequests = () => {
                                                         volunteerId}`}>
                                                         <div className="flex items-center ">
                                                             <div className="flex items-center gap-2 lg:gap-3">
-                                                                <img className="object-cover h-8 lg:h-9 rounded-full" src={myRequest?.organizer?.photo} alt="User photo" referrerPolicy='no-referrer'/>
+                                                                <img className="object-cover h-8 lg:h-9 rounded-full" src={myRequest?.organizer?.photo} alt="User photo" referrerPolicy='no-referrer' />
 
                                                                 <div className="flex flex-col ">
                                                                     <p className=" font-semibold opacity-95 text-sm lg:text-base hover:link hover:font-semibold" tabIndex={0} role="link">{myRequest?.organizer?.name}</p>
@@ -160,19 +161,38 @@ const MyVolunteerRequests = () => {
                                                 </td>
                                                 <td className="px-4 py-3 whitespace-nowrap">
                                                     <div
-                                                        className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-red-100/60 text-red-500 `}>
+                                                        className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2  ${myRequest.status === 'Requested' && 'bg-red-100/60 text-red-500'}
+                                                            ${myRequest.status === 'Accepted' && 'bg-green-100/60 text-green-500'}
+                                                           
+                                                            `}>
                                                         <span
-                                                            className={`h-1 lg:h-1.5 w-1 lg:w-1.5 rounded-full bg-red-500 `}
+                                                            className={`h-1 lg:h-1.5 w-1 lg:w-1.5 rounded-full ${myRequest.status === 'Requested' && 'bg-red-500'} 
+                                                                ${myRequest.status === 'Accepted' && 'bg-green-500'}
+                                                                `}
                                                         ></span>
                                                         <h2 className='text-xs lg:text-sm font-normal '>{myRequest.status}</h2>
                                                     </div>
                                                 </td>
                                                 <td className="px-4 py-3 whitespace-nowrap">
-                                                    <button
-                                                        onClick={() => handleRequestDelete(myRequest._id)}
-                                                        className=" btn btn-sm btn-circle text-xl lg:text-2xl text-red-600">
-                                                        <MdCancel />
-                                                    </button>
+                                                    {
+                                                        myRequest.status === 'Accepted' ?
+                                                            (
+                                                                <button
+                                                                    title="Accepted!"
+                                                                    className="btn btn-sm btn-circle  text-green-600 " >
+                                                                    <PiUserCircleCheckFill className="text-xl lg:text-2xl" />
+                                                                </button>
+                                                            )
+                                                            :
+                                                            (
+                                                                <button
+                                                                    title="Cancel!"
+                                                                    onClick={() => handleRequestDelete(myRequest._id)}
+                                                                    className=" btn btn-sm btn-circle text-xl lg:text-2xl text-red-600">
+                                                                    <MdCancel />
+                                                                </button>
+                                                            )
+                                                    }
                                                 </td>
                                             </tr>
                                         )
