@@ -21,12 +21,10 @@ This Volunteer Management Website aims to connect volunteers with organizations 
 Follow these steps to install and run the project locally:
 
 ### 1. Clone the Repository:
-Click the "Copy" button to clone the project to your local machine:
+To Run This Project Locally,follow these steps:
 ```bash
 git clone https://github.com/SaifullahKabirRana/HelpNow-Platform.git
-### 2. npm install:
-```bash
+
 npm i
-### 3. project run:
-```bash
+
 npm run dev
