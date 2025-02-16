@@ -96,7 +96,7 @@ const MyVolunteerRequests = () => {
                 <div className="flex items-center gap-x-3 mb-4">
                     <h2 className=" text-lg md:text-xl  font-semibold leading-tight">My Volunteer Request</h2>
                     <span className='px-3 py-1 text-xs md:text-sm bg-[#a8abff4b]  text-[#797DFC] rounded-full '>
-                        {myRequests?.length} Post
+                        {myRequests?.length} Request
                     </span>
                 </div>
                 {

@@ -12,7 +12,7 @@ const Slide = ({image, text,buttonText, title}) => {
             }}
         >
             <div className='flex items-center justify-center w-full h-full bg-gray-900/40 '>
-                <div className='text-center px-4 animate__animated animate__fadeInLeftBig'>
+                <div className='text-center px-4 '>
                     <h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-1 md:mb-3 lg:mb-4'>
                        {title}
                     </h1>

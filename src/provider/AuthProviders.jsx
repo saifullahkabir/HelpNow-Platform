@@ -3,15 +3,17 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import useAxiosCommon from "../hooks/useAxiosCommon";
 
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-const AuthProviders = ({children}) => {
+const AuthProviders = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const axiosCommon = useAxiosCommon();
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -33,7 +35,7 @@ const AuthProviders = ({children}) => {
         return signOut(auth);
     }
 
-    const updateUserProfile = (name, photo) =>{
+    const updateUserProfile = (name, photo) => {
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
@@ -42,16 +44,35 @@ const AuthProviders = ({children}) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = {email: userEmail};
             setUser(currentUser);
             setLoading(false);
+            // if user exists then issue a token
+            // if(currentUser) {
+            //     const { data } = axiosCommon.post(`/jwt`, loggedUser)
+            //     console.log('loggedUser', data);
+            // }
+            if (currentUser) {
+                axiosCommon.post(`/jwt`, loggedUser)
+                    .then(res => {
+                        console.log('logged user:', res.data);
+                    })
+            }
+            else{
+                axiosCommon.post(`/logout`, loggedUser)
+                .then(res => {
+                     console.log(res.data);
+                })
+            }
         })
         return () => {
-            unSubscribe();  
+            unSubscribe();
         }
     }, [])
 
     const authInfo = {
-        user, 
+        user,
         setUser,
         loading,
         createUser,
@@ -60,7 +81,7 @@ const AuthProviders = ({children}) => {
         updateUserProfile,
         logOut,
     }
-    
+
 
     return (
         <AuthContext.Provider value={authInfo}>

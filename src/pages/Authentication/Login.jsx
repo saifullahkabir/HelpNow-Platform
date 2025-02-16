@@ -5,12 +5,14 @@ import { VscEye, VscEyeClosed } from 'react-icons/vsc';
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import useAxiosCommon from '../../hooks/useAxiosCommon';
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signIn, signInWithGoogle } = useAuth();
     const [loginError, setLoginError] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosCommon = useAxiosCommon();
 
     const handleGoogleSignIn = async () => {
         try {
