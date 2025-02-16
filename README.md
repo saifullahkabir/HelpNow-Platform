@@ -23,4 +23,10 @@ Follow these steps to install and run the project locally:
 ### 1. Clone the Repository:
 Click the "Copy" button to clone the project to your local machine:
 ```bash
-git clone https://github.com/yourusername/volunteer-management-website.git
+git clone https://github.com/SaifullahKabirRana/HelpNow-Platform.git
+### 2. npm install:
+```bash
+npm i
+### 3. project run:
+```bash
+npm run dev
