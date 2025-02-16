@@ -1,21 +1,21 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { MdCancel } from "react-icons/md";
 import useAuth from "../hooks/useAuth";
-import useAxiosCommon from "../hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import { PiUserCircleCheckFill } from "react-icons/pi";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const MyVolunteerRequests = () => {
     const { user } = useAuth();
-    const axiosCommon = useAxiosCommon();
+    const axiosSecure = useAxiosSecure();
     const location = useLocation();
 
     const getData = async () => {
-        const { data } = await axiosCommon(`/my-request/${user?.email}`);
+        const { data } = await axiosSecure(`/my-request/${user?.email}`);
         return (Array.isArray(data) ? data : []);
     }
 
@@ -56,7 +56,7 @@ const MyVolunteerRequests = () => {
         // if the user confirms, it will be deleted
         if (result?.isConfirmed) {
             try {
-                const response = await axiosCommon.delete(`/volunteerRequest/${id}`);
+                const response = await axiosSecure.delete(`/volunteerRequest/${id}`);
                 console.log(response, 'response');
                 if (response.data.deletedCount > 0) {
                     // ui update

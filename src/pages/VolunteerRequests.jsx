@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
-import useAxiosCommon from "../hooks/useAxiosCommon";
 import { Link } from "react-router-dom";
 import { MdCancel } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
@@ -10,13 +9,14 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { BsCheckAll } from "react-icons/bs";
 import { PiUserCheckBold, PiUserCheckFill, PiUserCircleCheckFill } from "react-icons/pi";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const VolunteerRequests = () => {
-    const axiosCommon = useAxiosCommon();
+    
     const { user } = useAuth();
-
+    const axiosSecure = useAxiosSecure();
     const getData = async () => {
-        const { data } = await axiosCommon(`/volunteer-requests/${user?.email}`)
+        const { data } = await axiosSecure(`/volunteer-requests/${user?.email}`)
         return (Array.isArray(data) ? data : []);
 
     }
@@ -48,7 +48,7 @@ const VolunteerRequests = () => {
         // if the user confirms, it will be deleted
         if (result?.isConfirmed) {
             try {
-                const response = await axiosCommon.delete(`/volunteerRequest/${id}`);
+                const response = await axiosSecure.delete(`/volunteerRequest/${id}`);
                 console.log(response, 'response');
                 if (response.data.deletedCount > 0) {
                     // ui update
@@ -79,7 +79,7 @@ const VolunteerRequests = () => {
     // handle Accepted 
     const handleAccept = async (id) => {
         try {
-            await axiosCommon.patch(`/volunteer-requests/${id}`, { status: 'Accepted' });
+            await axiosSecure.patch(`/volunteer-requests/${id}`, { status: 'Accepted' });
             toast.success('Request Accepted!');
             refetch();
         }

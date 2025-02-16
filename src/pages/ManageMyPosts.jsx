@@ -1,5 +1,4 @@
 import useAuth from '../hooks/useAuth';
-import useAxiosCommon from '../hooks/useAxiosCommon';
 import { MdDeleteOutline } from 'react-icons/md';
 import { BiEdit } from 'react-icons/bi';
 import { useQuery } from '@tanstack/react-query';
@@ -8,14 +7,15 @@ import Swal from "sweetalert2";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import MyVolunteerRequests from './MyVolunteerRequests';
 import { Helmet } from 'react-helmet-async';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 
 const ManageMyPosts = () => {
     const { user } = useAuth();
-    const axiosCommon = useAxiosCommon();
+    const axiosSecure = useAxiosSecure();
 
     const getData = async () => {
-        const { data } = await axiosCommon(`/volunteerNeeds/${user?.email}`);
+        const { data } = await axiosSecure(`/volunteerNeeds/${user?.email}`);
         return (Array.isArray(data) ? data : []);
 
     }
@@ -47,7 +47,7 @@ const ManageMyPosts = () => {
         // if the user confirms, it will be deleted
         if (result?.isConfirmed) {
             try {
-                const response = await axiosCommon.delete(`/volunteerNeed/${id}`);
+                const response = await axiosSecure.delete(`/volunteerNeed/${id}`);
 
                 if (response.data.deletedCount > 0) {
                     // ui update
