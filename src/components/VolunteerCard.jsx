@@ -39,7 +39,7 @@ const VolunteerCard = ({ volunteerNeed }) => {
                                         <span className="text-xs lg:text-sm font-medium  opacity-80">{new Date(deadline).toLocaleDateString()}</span>
                                     </div>
                                     <h2 className="block mt-2 text-lg md:text-xl font-semibold opacity-95 transition-colors duration-300 transform  hover:text-gray-600  hover:underline flex-grow" tabIndex={0} role="link">{postTitle}</h2>
-                                    <p className="mt-2 text-sm opacity-80 flex-grow">{description}</p>
+                                    <p className="mt-2 text-sm opacity-80 flex-grow">{description.substring(0,80)}...</p>
                                 </div>
 
                                 <div className="mt-4 lg:mt-6 flex justify-between items-center">
