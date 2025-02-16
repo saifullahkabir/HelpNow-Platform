@@ -143,7 +143,7 @@ const VolunteerRequests = () => {
                                                             volunteerId}`}>
                                                             <div className="flex items-center ">
                                                                 <div className="flex items-center gap-2 lg:gap-3">
-                                                                    <img className="object-cover h-8 lg:h-9 rounded-full" src={request?.volunteer?.photo} alt="User photo" referrerPolicy='no-referrer' />
+                                                                    <img className="object-cover w-8 lg:w-10 h-8 lg:h-10 rounded-full" src={request?.volunteer?.photo} alt="User photo" referrerPolicy='no-referrer' />
 
                                                                     <div className="flex flex-col ">
                                                                         <p className=" font-semibold opacity-95 text-sm lg:text-base hover:link hover:font-semibold" tabIndex={0} role="link">{request?.volunteer?.name}</p>

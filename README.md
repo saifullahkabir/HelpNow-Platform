@@ -1,8 +1,26 @@
 # HelpNow-Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site: [https://helpnow-platform.vercel.app]
 
-Currently, two official plugins are available:
+## Description:
+This Volunteer Management Website aims to connect volunteers with organizations and individuals who need help. It allows users to post volunteer opportunities, request volunteers for existing posts, manage their volunteer requests, and search for volunteer opportunities easily. The website uses modern web technologies to provide a seamless user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features:
+- Users can post volunteer opportunities, manage their posts, and request volunteers from other's posts.
+- Manage volunteer requests by accepting or canceling them.
+- A search option on the "Need Volunteers" page for easy navigation.
+- Card and table layout options for displaying volunteer opportunities and requests.
+
+## Technologies Used:
+- **Front-end**: HTML, CSS, Tailwind CSS, JavaScript, React, Axios, Tanstack Query, Firebase.
+- **Back-end**: Node.js, Express.js, JWT.
+- **Database**: MongoDB.
+
+## Installation and Run Instructions:
+
+Follow these steps to install and run the project locally:
+
+### 1. Clone the Repository:
+Click the "Copy" button to clone the project to your local machine:
+```bash
+git clone https://github.com/yourusername/volunteer-management-website.git

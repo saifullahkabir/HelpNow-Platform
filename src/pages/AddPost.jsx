@@ -116,6 +116,7 @@ const AddPost = () => {
                                 <option value='Social Service'>Social Service</option>
                                 <option value='Animal Welfare'>Animal Welfare</option>
                                 <option value='Tree Plantation'>Tree Plantation</option>
+                                <option value='Blood Donation'>Blood Donation</option>
                                 <option value='Donation'>Donation</option>
                             </select>
                         </div>

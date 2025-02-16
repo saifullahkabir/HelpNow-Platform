@@ -69,7 +69,7 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
         }
         catch (err) {
             document.getElementById("my_modal_3").close();
-            toast.error(err?.message);
+            toast.error(err?.response?.data);
         }
     }
 
