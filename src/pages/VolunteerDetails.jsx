@@ -14,7 +14,6 @@ const VolunteerDetails = () => {
     const [volunteersNeeded, setVolunteersNeeded] = useState(volunteerNeed?.volunteersNeeded || 0);
 
     const {
-        _id,
         thumbnail,
         postTitle,
         description,

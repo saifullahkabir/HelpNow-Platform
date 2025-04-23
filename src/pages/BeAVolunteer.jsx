@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import useAxiosCommon from "../hooks/useAxiosCommon";
@@ -87,7 +88,7 @@ const BeAVolunteer = ({ volunteerNeed, volunteersNeeded, setVolunteersNeeded }) 
                             <span
                                 className={`h-1.5 w-1.5 rounded-full bg-red-500 `}
                             ></span>
-                            <h2 className='text-sm font-normal '>Requested</h2>
+                            <h2 className='text-sm font-normal '>Request</h2>
                         </div>
                     </div>
 

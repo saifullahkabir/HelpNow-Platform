@@ -12,6 +12,7 @@ const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [registerError, setRegisterError] = useState('');
+    const [nameError, setNameError] = useState('');
 
     const handleGoogleSignUp = async () => {
         try {
@@ -29,10 +30,15 @@ const Register = () => {
     const handleSignUp = async e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
+        const name = form.name.value.trim();
         const email = form.email.value;
-        const photo = form.photo.value;
-        const password = form.password.value;
+        const photo = form.photo.value.trim();
+        const password = form.password.value.trim();
+
+        // Name whitespace validation
+        if (name === "") {
+            return setNameError('Name field cannot be empty or just spaces')
+        }
 
         // Password Authentication
         if (password.length < 6) {
@@ -46,6 +52,7 @@ const Register = () => {
         }
 
         setRegisterError('');
+        setNameError('');
 
         try {
             const result = await createUser(email, password);
@@ -89,6 +96,11 @@ const Register = () => {
                                     required
                                     className="block w-full py-3 text-opacity-80  border rounded-lg px-11    focus:border-gray-400  focus:ring-gray-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                 />
+                            </div>
+                            <div className='mt-2 ml-2'>
+                                {
+                                    nameError && <p className="text-[12px] md:text-[15px] text-red-500">{nameError}</p>
+                                }
                             </div>
                             <div className="relative flex items-center mt-3 md:mt-4">
                                 <span className="absolute">

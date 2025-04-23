@@ -34,7 +34,7 @@ const TableLayout = ({ dataToShow }) => {
                                     <td className="px-4 py-3 ">
                                         <Link to={`/volunteerNeed/${dataShow._id}`}>
                                             <div>
-                                                <img className="w-28 md:w-32 lg:w-36 xl:w-40 h-full rounded-lg" src={dataShow.thumbnail} alt="thumbnail" />
+                                                <img className="w-28 md:w-32 lg:w-36 xl:w-40 h-[40px] lg:h-[50px] xl:h-[110px] rounded-lg" src={dataShow.thumbnail} alt="thumbnail" />
                                             </div>
                                         </Link>
                                     </td>

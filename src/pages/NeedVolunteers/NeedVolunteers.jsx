@@ -1,5 +1,4 @@
 import { CiSearch } from "react-icons/ci";
-import { FaSearch } from "react-icons/fa";
 import useAxiosCommon from "../../hooks/useAxiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import CardLayout from "./CardLayout";
@@ -13,7 +12,7 @@ import { Helmet } from "react-helmet-async";
 const NeedVolunteers = () => {
     const axiosCommon = useAxiosCommon();
     const [search, setSearch] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchResult, setSearchResult] = useState(null);
     const [tableView, setTableView] = useState(false);
 
 
@@ -25,38 +24,49 @@ const NeedVolunteers = () => {
     const {
         data: volunteerNeeds = [],
         isLoading,
-        refetch
     } = useQuery({
         queryFn: getData,
         queryKey: ['volunteerNeeds']
     })
 
-    useEffect(() => {
-        const getSearchData = async () => {
-            if (!search.trim()) {
-                setSearchResult([]); // Reset search result if empty
-                return;
-            }
+    // useEffect(() => {
+    //     const getSearchData = async () => {
+    //         if (!search.trim()) {
+    //             setSearchResult([]); // Reset search result if empty
+    //             return;
+    //         }
 
-            try {
-                const { data } = await axiosCommon(`/searchPosts?search=${search}`);
-                setSearchResult(data);
-            }
-            catch (err) {
-                toast.error("Search failed:", err)
-            }
-        }
-        getSearchData();
-    }, [search, axiosCommon])
+    //         try {
+    //             const { data } = await axiosCommon(`/searchPosts?search=${search}`);
+    //             setSearchResult(data);
+    //         }
+    //         catch (err) {
+    //             toast.error("Search failed:", err)
+    //         }
+    //     }
+    //     getSearchData();
+    // }, [search, axiosCommon])
 
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         e.preventDefault();
-        setSearch(search);
+        if (!search.trim()) {
+            toast.error("Please enter something to search.");
+            return;
+        }
+
+        try {
+            const { data } = await axiosCommon(`/searchPosts?search=${search}`);
+            setSearchResult(data);
+        }
+
+        catch (err) {
+            toast.error('Search failed:', err)
+        }
     }
 
     const handleReset = () => {
         setSearch('');
-        setSearchResult([]);
+        setSearchResult(null);
     }
 
     // Load layout from Local Storage on first render
@@ -80,7 +90,8 @@ const NeedVolunteers = () => {
         </div>
     }
 
-    const dataToShow = search ? searchResult : volunteerNeeds;
+    // const dataToShow = search ? searchResult : volunteerNeeds;
+    const dataToShow = searchResult !== null ? searchResult : volunteerNeeds;
 
     return (
         <div className="pt-24 md:pt-24 lg:pt-28 xl:pt-32 pb-10 md:pb-14 xl:pb-24">
@@ -157,7 +168,7 @@ const NeedVolunteers = () => {
                             )
                             :
                             (
-
+                                searchResult !== null &&
                                 <div>
                                     <p className="text-center py-4 text-lg text-gray-500">No Data Found</p>
                                 </div>
