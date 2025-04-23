@@ -15,19 +15,19 @@ const VolunteerCard = ({ volunteerNeed }) => {
         postDate,
         organizer,
     } = volunteerNeed;
-    
+
     // for 05 FEB 2025 this format
     const options = { day: "2-digit", month: "short", year: "numeric" };
     const formattedDate = postDate ?
         new Date(postDate).toLocaleDateString("en-GB", options).toUpperCase()
         : "N/A";
-    
+
     return (
         <div>
             <Fade>
                 <Link to={`/volunteerNeed/${_id}`}>
                     <div className="flex flex-col h-full ">
-                        <div className="max-w-2xl overflow-hidden border border-gray-50 rounded-lg shadow-md hover:scale-[1.05] transition-all flex flex-col h-full">
+                        <div className="max-w-2xl overflow-hidden border border-gray-50 rounded-lg shadow-md hover:scale-[1.05] transition-all flex flex-col min-h-full md:min-h-[470px] lg:min-h-[510px] xl:min-h-[528px]">
                             <div className="p-4 lg:p-6 rounded-2xl">
                                 <img className="object-cover rounded-2xl   w-full h-48 md:h-56 lg:h-60 xl:h-64" src={thumbnail} alt="thumbnail" />
                             </div>
@@ -39,7 +39,7 @@ const VolunteerCard = ({ volunteerNeed }) => {
                                         <span className="text-xs lg:text-sm font-medium  opacity-80">{new Date(deadline).toLocaleDateString()}</span>
                                     </div>
                                     <h2 className="block mt-2 text-lg md:text-xl font-semibold opacity-95 transition-colors duration-300 transform  hover:text-gray-600  hover:underline flex-grow" tabIndex={0} role="link">{postTitle}</h2>
-                                    <p className="mt-2 text-sm opacity-80 flex-grow">{description.substring(0,80)}...</p>
+                                    <p className="mt-2 text-sm opacity-80 flex-grow">{description.substring(0, 80)}...</p>
                                 </div>
 
                                 <div className="mt-4 lg:mt-6 flex justify-between items-center">

@@ -27,7 +27,7 @@ const CardLayout = ({ volunteerNeed }) => {
             <Fade>
                 <Link to={`/volunteerNeed/${_id}`}>
                     <div className="flex flex-col h-full ">
-                        <div className="max-w-2xl overflow-hidden border border-gray-50 rounded-lg shadow-md hover:scale-[1.05] transition-all flex flex-col h-full">
+                        <div className="max-w-2xl overflow-hidden border border-gray-50 rounded-lg shadow-md hover:scale-[1.05] transition-all flex flex-col min-h-full md:min-h-[470px] lg:min-h-[510px] xl:min-h-[528px]">
                             <div className="p-4 lg:p-6 rounded-2xl">
                                 <img className="object-cover rounded-2xl   w-full h-48 md:h-56 lg:h-60 xl:h-64" src={thumbnail} alt="thumbnail" />
                             </div>

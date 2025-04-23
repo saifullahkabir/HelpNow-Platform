@@ -14,13 +14,13 @@ import './swiper.css';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import Slide from './Slide';
 
-import bgImage1 from '../../assets/cleaner1.jpg'
-import bgImage2 from '../../assets/health.jpg'
-import bgImage3 from '../../assets/tree1.jpg'
-import bgImage4 from '../../assets/educational.jpg'
-import bgImage5 from '../../assets/poor.jpg'
-import bgImage6 from '../../assets/animal.jpg'
-import bgImage7 from '../../assets/donation.jpg'
+import bgImage1 from '../../assets/cleaner1.webp'
+import bgImage2 from '../../assets/health.webp'
+import bgImage3 from '../../assets/tree1.webp'
+import bgImage4 from '../../assets/educational.webp'
+import bgImage5 from '../../assets/poor.webp'
+import bgImage6 from '../../assets/animal.webp'
+import bgImage7 from '../../assets/donation.webp'
 
 import 'animate.css';
 
