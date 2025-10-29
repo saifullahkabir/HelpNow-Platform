@@ -196,9 +196,8 @@ const AddPost = () => {
                     </div>
                     <div className='flex justify-end mt-4 md:mt-6'>
                         <button disabled={loading}
-                            className={`btn-sm lg:btn-md btn bg-[#797DFC] hover:bg-[#888cfcc0] text-white ${loading && 'bg-[#888cfcc0]'
-                                }
-                            `}>
+                        type="submit"
+                            className={`btn-sm lg:btn-md btn bg-[#797DFC] hover:bg-[#888cfcc0] text-white ${loading && 'bg-[#888cfcc0]'}`}>
                             {
                                 loading ?
 
