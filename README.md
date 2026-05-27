@@ -1,6 +1,6 @@
 # HelpNow-Platform
 
-Live Site: [HelpNow Platform](https://helpnow-platform.vercel.app)
+Live Site: [HelpNow Platform](https://helpnow-platform.web.app)
 
 ## Description:
 This Volunteer Management Website aims to connect volunteers with organizations and individuals who need help. It allows users to post volunteer opportunities, request volunteers for existing posts, manage their volunteer requests, and search for volunteer opportunities easily. The website uses modern web technologies to provide a seamless user experience.
