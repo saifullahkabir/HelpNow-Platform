@@ -80,19 +80,6 @@ HelpNow is a modern Full Stack Volunteer Management Platform that connects volun
 
 ---
 
-# 📦 Packages Used
-
-- @tanstack/react-query
-- axios
-- firebase
-- react-router-dom
-- react-icons
-- react-hot-toast
-- react-helmet-async
-- date-fns
-
----
-
 # 🚀 Installation
 
 Clone the repository
